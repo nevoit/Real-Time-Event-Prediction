@@ -16,6 +16,8 @@ if __name__ == '__main__':
         TIRP(stis=[], temp_rels=[])
     ]
 
+    # TODO: temporal relations with the event can be only meets or before
+
     cont_pred_tim = MulTIRPs(pat_com_cls='XGBoost',
                              pat_com_reg='XGBoost',
                              agg_func='mean')
