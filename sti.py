@@ -20,6 +20,10 @@ class STI:
         # Both start and end tiep have the same symbol
         return self.start_tiep.get_symbol_id()
 
+    def get_var_id(self) -> int:
+        # Both start and end tiep have the same var id
+        return self.start_tiep.get_var_id()
+
     def get_symbol_instance_id(self) -> int:
         # Both start and end tiep have the same symbol instance index
         return self.start_tiep.get_symbol_instance_id()

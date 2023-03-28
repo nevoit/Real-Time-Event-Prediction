@@ -3,6 +3,9 @@ class STIDB:
         self.sti_series_list: list = sti_series_list
         self._check_input_validity()
 
+    def get_sti_series(self):
+        return self.sti_series_list
+
     def _check_input_validity(self):
         # This function check the validity of the input and assert in case of wrong input
         if not len(self.sti_series_list) >= 0:

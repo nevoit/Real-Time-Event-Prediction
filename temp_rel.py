@@ -1,4 +1,5 @@
 from sti import STI
+import const
 
 
 class TempRel:
@@ -28,19 +29,19 @@ class TempRel:
         :return:The Allen's temporal relation
         """
         if self.sti_a.get_start_time() < self.sti_a.get_end_time() < self.sti_b.get_start_time() < self.sti_b.get_end_time():
-            return 'b'  # b | before      | A+ < A- < B+ < B-
+            return const.TEMP_REL_BEFORE  # b | before      | A+ < A- < B+ < B-
         elif self.sti_a.get_start_time() < self.sti_a.get_end_time() == self.sti_b.get_start_time() < self.sti_b.get_end_time():
-            return 'm'  # m | meets       | A+ < A- = B+ < B-
+            return const.TEMP_REL_MEETS  # m | meets       | A+ < A- = B+ < B-
         elif self.sti_a.get_start_time() < self.sti_b.get_start_time() < self.sti_a.get_end_time() < self.sti_b.get_end_time():
-            return 'o'  # o | overlaps    | A+ < B+ < A- < B-
+            return const.TEMP_REL_OVERLAPS  # o | overlaps    | A+ < B+ < A- < B-
         elif self.sti_a.get_start_time() < self.sti_b.get_start_time() < self.sti_a.get_end_time() == self.sti_b.get_end_time():
-            return 'f'  # f | finished-by | A+ < B+ < A- = B-
+            return const.TEMP_REL_FINISHED_BY  # f | finished-by | A+ < B+ < A- = B-
         elif self.sti_a.get_start_time() < self.sti_b.get_start_time() < self.sti_b.get_end_time() < self.sti_a.get_end_time():
-            return 'c'  # c | contains    | A+ < B+ < B- < A-
+            return const.TEMP_REL_CONTAINS  # c | contains    | A+ < B+ < B- < A-
         elif self.sti_a.get_start_time() == self.sti_b.get_start_time() < self.sti_a.get_end_time() < self.sti_b.get_end_time():
-            return 's'  # s | starts      | A+ = B+ < A- < B-
+            return const.TEMP_REL_STARTS  # s | starts      | A+ = B+ < A- < B-
         elif self.sti_a.get_start_time() == self.sti_b.get_start_time() < self.sti_a.get_end_time() == self.sti_b.get_end_time():
-            return 'e'  # e | equals      | A+ = B+ < A- = B-
+            return const.TEMP_REL_EQUALS  # e | equals      | A+ = B+ < A- = B-
 
         assert "Error with the temporal relations"
 
