@@ -28,7 +28,7 @@ def read_patterns_file(file_path) -> list[TIRP]:
         else:
             tirp = TIRP(stis=sti_list, temp_rels=rel_list, vs=vs, hs=hs)
             for i in range(len(sti_list)-1):
-                rel_with_event = tirp.get_temp_rel_by_ids(i, len(sti_list)-1)
+                rel_with_event = tirp.get_temp_rel_by_sti_ids(i, len(sti_list) - 1)
                 if rel_with_event not in {const.TEMP_REL_BEFORE, const.TEMP_REL_MEETS}:
                     print('Temporal relations with the event of interest must be before or meets')
                     continue

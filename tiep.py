@@ -5,7 +5,8 @@ class Tiep:
     """
     This class represents the time interval endpoint that comprised of time, type, symbol id, and the symbol instance id
     """
-    def __init__(self, time: int, tiep_type: str, sym_id: int, sym_inst_id: int, var_id: int, dummy: bool = False):
+    def __init__(self, time: int, tiep_type: str, sym_id: int, sym_inst_id: int, var_id: int,
+                 tiep_inst_id: int = -1, dummy: bool = False):
         """
         :param time: the time of occurrence
         :param tiep_type: starting or ending endpoint
@@ -18,7 +19,8 @@ class Tiep:
         self.tiep_type: str = tiep_type
         self.sym_id: int = sym_id
         self.var_id: int = var_id
-        self.sym_inst_id: int = sym_inst_id  # each instance of this tiep should get different id
+        self.sym_inst_id: int = sym_inst_id  # each instance of this tiep should get the STI id
+        self.tiep_inst_id: int = tiep_inst_id # each instance of this tiep should get different id
         self.dummy: bool = dummy
         self._check_input_validity()
 
@@ -36,6 +38,9 @@ class Tiep:
 
     def get_symbol_instance_id(self) -> int:
         return self.sym_inst_id
+
+    def get_tiep_instance_id(self) -> int:
+        return self.tiep_inst_id
 
     def is_start_type(self) -> bool:
         return self.tiep_type == const.START_TIEP

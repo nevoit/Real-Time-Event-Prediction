@@ -12,6 +12,7 @@ TEMP_REL_STARTS = 's'
 # Tiep
 START_TIEP = '+'
 END_TIEP = '-'
+REL_TIEP = '<'
 
 # STI data column names
 STI_DATA_SERIES_ID_COL_NAME = 'SeriesID'
