@@ -15,6 +15,9 @@ class STISeries:
         self.time_points: TimePointSeries = TimePointSeries(tiep_series=self.tieps)
         self._check_input_validity()
 
+    def get_tieps(self):
+        return self.tieps
+
     def get_time_points(self):
         return self.time_points
 
