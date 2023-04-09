@@ -8,17 +8,17 @@ class TiepSeries:
     """
 
     def __init__(self, stis_list: list[STI]):
-        self.tiep_list: list = self._create_sorted_tiep_series(stis_list)
+        self.tiep_list: list[Tiep] = self._create_sorted_tiep_series(stis_list)
         self._check_input_validity()
 
-    def _create_sorted_tiep_series(self, stis_list) -> list:
+    def _create_sorted_tiep_series(self, stis_list) -> list[Tiep]:
         # This function creates sorted tiep series
         tiep_list = []
         for sti in stis_list:
             tiep_list.append(sti.start_tiep)
             tiep_list.append(sti.end_tiep)
 
-        return self._sort_tiep_list(tiep_list)
+        return self._sort_tiep_list(tiep_list=tiep_list)
 
     def _sort_tiep_list(self, tiep_list: list[Tiep]) -> list[Tiep]:
         return sorted(tiep_list, key=self.sort_tiep)

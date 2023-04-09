@@ -71,6 +71,9 @@ def read_sti_file(file_path) -> STIDB:
                               sym_id=symbol_id, sym_inst_id=symbol_inst_id[symbol_id], var_id=var_id)
             end_tiep = Tiep(time=end_time, tiep_type=const.END_TIEP,
                             sym_id=symbol_id, sym_inst_id=symbol_inst_id[symbol_id], var_id=var_id)
+            start_tiep.add_pair_tiep(tiep=end_tiep)
+            end_tiep.add_pair_tiep(tiep=start_tiep)
+
             sti = STI(start_tiep=start_tiep, end_tiep=end_tiep)
             stis_list.append(sti)
 

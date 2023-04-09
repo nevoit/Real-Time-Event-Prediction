@@ -1,3 +1,4 @@
+import const
 from tiep import Tiep
 
 
@@ -12,3 +13,19 @@ class TIRPPrefix:
 
         """
         self.tieps: list[list[Tiep]] = tieps
+
+    def get_tieps(self):
+        return self.tieps
+
+    def get_tieps_str(self) -> str:
+        tiep_str = ''
+        for i, tps in enumerate(self.tieps):
+            if len(tps) > 1:
+                tiep_str += '('
+            for tp in tps:
+                tiep_str += f'{tp.tiep_type}{tp.sym_id}'
+            if len(tps) > 1:
+                tiep_str += ')'
+            if i != len(self.tieps) - 1:
+                tiep_str += const.REL_TIEP
+        return tiep_str

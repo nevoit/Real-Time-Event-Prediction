@@ -15,6 +15,23 @@ class STISeries:
         self.time_points: TimePointSeries = TimePointSeries(tiep_series=self.tieps)
         self._check_input_validity()
 
+    def get_stis_str(self):
+        sti_str = ''
+        for sti in self.stis:
+            start_time = sti.get_start_time()
+            end_time = sti.get_end_time()
+            sym_id = str(sti.get_symbol_id())
+            space_str = ' ' * start_time
+            interval_str = '-' * (end_time - start_time)
+            if len(interval_str) == 1:
+                interval_str = sym_id
+            else:
+                str_to_replace_index = int(len(interval_str) / 2) - 1  # replace the middle char
+                interval_str = "".join(
+                    (interval_str[:str_to_replace_index], sym_id, interval_str[str_to_replace_index + len(sym_id):]))
+            sti_str += f'{space_str}{interval_str} \n'
+        return sti_str
+
     def get_tieps(self):
         return self.tieps
 
