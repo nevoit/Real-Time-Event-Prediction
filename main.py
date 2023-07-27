@@ -3,6 +3,7 @@ from mul_tirps import MulTIRPs
 import read_files
 from os import path
 
+from tirp_based_model import SCPM
 from tirp_comp import TIRPCompletion
 
 if __name__ == '__main__':
@@ -34,14 +35,17 @@ if __name__ == '__main__':
 
     tirps_list = read_files.read_patterns_file(patterns_path)
 
+    # This block iterates over the TIRPs and for each pattern learns a completion model
     for tirp in tirps_list:
         tirp_comp = TIRPCompletion(tirp=tirp, sti_train_set=train_set)
-        tirp_comp.learn_model(pat_com_cls='XGBoost', pat_com_reg='XGBoost')
-
-    cont_pred_tim = MulTIRPs(pat_com_cls='XGBoost',
-                             pat_com_reg='XGBoost',
-                             agg_func='mean')
-    cont_pred_tim.learn_model(train_set=train_set,
-                              list_of_patterns=tirps_list)
-    prob_res = cont_pred_tim.predict_prob(test_set=test_set)
-    conf_mat = evaluate(prob_res)
+    #     tirp_comp.learn_occ_prob_model(cls=SCPM())
+    #     tirp_comp.learn_occ_prob_model(cls_name='XGBoost')
+    #     tirp_comp.learn_occ_time_model(cls_name='XGBoost')
+    #
+    # cont_pred_tim = MulTIRPs(pat_com_cls='XGBoost',
+    #                          pat_com_reg='XGBoost',
+    #                          agg_func='mean')
+    # cont_pred_tim.learn_model(train_set=train_set,
+    #                           list_of_patterns=tirps_list)
+    # prob_res = cont_pred_tim.predict_prob(test_set=test_set)
+    # conf_mat = evaluate(prob_res)

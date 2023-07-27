@@ -8,7 +8,7 @@ class STISeries:
     Lexicographical order symbolic time series
     """
 
-    def __init__(self, series_id: int, stis_list: list):
+    def __init__(self, series_id: int, stis_list: list[STI]):
         self.series_id: int = series_id
         self.stis: list = self._sort_sti_list(stis_list)
         self.tieps: TiepSeries = TiepSeries(stis_list=stis_list)
@@ -31,6 +31,14 @@ class STISeries:
                     (interval_str[:str_to_replace_index], sym_id, interval_str[str_to_replace_index + len(sym_id):]))
             sti_str += f'{space_str}{interval_str} \n'
         return sti_str
+
+    def get_last_sti_start_time(self) -> int:
+        # This is used to get the event start time in entities with events
+        last_sti: STI = self.stis[-1]
+        return last_sti.get_start_time()
+
+    def get_series_id(self):
+        return self.series_id
 
     def get_tieps(self):
         return self.tieps

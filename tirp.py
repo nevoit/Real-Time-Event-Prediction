@@ -62,6 +62,9 @@ class TIRP:
     def get_hs(self) -> float:
         return self.hs
 
+    def get_tieps_num(self) -> int:
+        return len(self.sorted_tieps)
+
     def get_temp_rel_by_sti_ids(self, early_sti_id: int, later_sti_id: int) -> str:
         """
         This function gets two different STI indexes and returns the temporal relation between them.

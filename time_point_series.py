@@ -29,6 +29,16 @@ class TimePointSeries:
     def get_last_time_point_time(self) -> int:
         return self.time_point_series[-1].get_time()
 
+    def get_durations_between_all_tieps(self):
+        dur_list = []
+        for i in range(len(self.time_point_series)-1):
+            dur_list.append(self.get_duration_between_adj_tieps(i))
+        return dur_list
+
+    def get_duration_between_adj_tieps(self, first_tiep_index):
+        gp = self.time_point_series[first_tiep_index+1].get_time() - self.time_point_series[first_tiep_index].get_time()
+        return gp
+
     def is_tiep_instance_exist(self, tiep: Tiep) -> bool:
         for tp in self.time_point_series:
             if tp.is_tiep_instance_exist(tiep):
@@ -63,6 +73,6 @@ class TimePointSeries:
         tiep_str = ''
         for i, time_point in enumerate(self.time_point_series):
             tiep_str += time_point.get_tiep_str()
-            if i != len(time_point.get_tieps()) - 1:
+            if i != len(self.time_point_series) - 1:
                 tiep_str += const.REL_TIEP
         return tiep_str

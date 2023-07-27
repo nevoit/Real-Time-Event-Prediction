@@ -1,7 +1,6 @@
 import copy
 from typing import Optional
 
-import const
 from tiep import Tiep
 from time_point import TimePoint
 from time_point_series import TimePointSeries
@@ -71,11 +70,10 @@ class TIRPPrefixDetection:
         # could be extended with the current time point
         new_tp_time = pot_tp.get_time()
         lst_prev_tp_time = prev_inst.get_last_time_point_time()
-        if lst_prev_tp_time > new_tp_time:  # if the new time point is before the last time point of the instance
+        if lst_prev_tp_time >= new_tp_time:  # if the new time point is before the last time point of the instance
             return False
         elif prev_inst.are_end_tieps_closed_their_start_tieps(time_point=pot_tp) and \
                 prev_inst.are_kept_unfinished_stis(time_point=pot_tp):
             return True
         else:
             return False
-
