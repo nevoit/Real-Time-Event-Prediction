@@ -114,7 +114,7 @@ class TIRP:
             if len(tps) > 1:
                 tiep_str += '('
             for tp in tps:
-                tiep_str += f'{tp.tiep_type}{tp.sym_id}'
+                tiep_str += f'{tp._tiep_type}{tp._sym_id}'
             if len(tps) > 1:
                 tiep_str += ')'
             if i != len(self.sorted_tieps) - 1:

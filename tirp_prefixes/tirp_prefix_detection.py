@@ -4,12 +4,15 @@ from typing import Optional
 from core_comp.tiep import Tiep
 from core_comp.time_point import TimePoint
 from core_comp.time_point_series import TimePointSeries
-from tirp_prefix import TIRPPrefix
+from tirp_prefix import TIRPrefix
 
 
-class TIRPPrefixDetection:
-    def __init__(self, tirp_prefix: TIRPPrefix):
-        self.tirp_prefix: TIRPPrefix = tirp_prefix
+class TIRPrefixDetection:
+    """
+    this class detect TIRP prefixes instances
+    """
+    def __init__(self, tirp_prefix: TIRPrefix):
+        self._tirp_prefix: TIRPrefix = tirp_prefix
 
     def _tieps_contain_in_tieps(self, tieps_x: list[Tiep], tieps_y: list[Tiep]) -> Optional[TimePoint]:
         # This function returns whether tieps_x are the contains in tieps_y
@@ -47,7 +50,7 @@ class TIRPPrefixDetection:
         :return:
         """
         tirp_prefix_insts = []
-        for tieps_i, tieps in enumerate(self.tirp_prefix.get_tieps()):  # iterates over the pattern tieps
+        for tieps_i, tieps in enumerate(self._tirp_prefix.get_tieps()):  # iterates over the pattern tieps
             pot_tieps_to_extend = self._find_tieps_in_time_point(tieps=tieps, time_point_series=time_point_series)
             if tieps_i == 0:  # iterates over the first pattern's tieps
                 for tp in pot_tieps_to_extend:

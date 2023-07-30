@@ -5,8 +5,8 @@ from core_comp.sti import STI
 from core_comp.sti_series import STISeries
 from core_comp.tiep import Tiep
 from core_comp.time_point_series import TimePointSeries
-from tirp_prefix import TIRPPrefix
-from tirp_prefix_detection import TIRPPrefixDetection
+from tirp_prefix import TIRPrefix
+from tirp_prefix_detection import TIRPrefixDetection
 
 
 class TestTIRPPrefixDetection(unittest.TestCase):
@@ -41,7 +41,7 @@ class TestTIRPPrefixDetection(unittest.TestCase):
 
         expected_instances = {'(+1+2[5])<-1[15]<-2[18]'}  # TODO: think about lexigorapical order with these tieps
 
-        tirp_prefix = TIRPPrefix(tieps=tieps)
+        tirp_prefix = TIRPrefix(tieps=tieps)
         sti_series = STISeries(series_id=0, stis_list=stis_list)
         self._format_for_tirp_prefix_detection(tirp_prefix=tirp_prefix,
                                                sti_series=sti_series,
@@ -77,7 +77,7 @@ class TestTIRPPrefixDetection(unittest.TestCase):
 
         expected_instances = {'(+2+1[5])<-1[15]<-2[16]'}  # TODO: think about lexigorapical order with these tieps
 
-        tirp_prefix = TIRPPrefix(tieps=tieps)
+        tirp_prefix = TIRPrefix(tieps=tieps)
         sti_series = STISeries(series_id=0, stis_list=stis_list)
         self._format_for_tirp_prefix_detection(tirp_prefix=tirp_prefix,
                                                sti_series=sti_series,
@@ -112,7 +112,7 @@ class TestTIRPPrefixDetection(unittest.TestCase):
 
         expected_instances = {'+1[18]<-1[22]<+1[25]', '+1[5]<-1[15]<+1[25]', '+1[5]<-1[15]<+1[18]'}
 
-        tirp_prefix = TIRPPrefix(tieps=tieps)
+        tirp_prefix = TIRPrefix(tieps=tieps)
         sti_series = STISeries(series_id=0, stis_list=stis_list)
         self._format_for_tirp_prefix_detection(tirp_prefix=tirp_prefix,
                                                sti_series=sti_series,
@@ -148,7 +148,7 @@ class TestTIRPPrefixDetection(unittest.TestCase):
 
         expected_instances = {'+1[5]<-1[15]<+1[18]<-1[22]', '+1[18]<-1[22]<+1[25]<-1[28]', '+1[5]<-1[15]<+1[25]<-1[28]'}
 
-        tirp_prefix = TIRPPrefix(tieps=tieps)
+        tirp_prefix = TIRPrefix(tieps=tieps)
         sti_series = STISeries(series_id=0, stis_list=stis_list)
         self._format_for_tirp_prefix_detection(tirp_prefix=tirp_prefix,
                                                sti_series=sti_series,
@@ -184,7 +184,7 @@ class TestTIRPPrefixDetection(unittest.TestCase):
 
         expected_instances = {'+1[5]<-1[15]<+1[18]<-1[22]', '+1[18]<-1[22]<+1[25]<-1[28]', '+1[5]<-1[15]<+1[25]<-1[28]'}
 
-        tirp_prefix = TIRPPrefix(tieps=tieps)
+        tirp_prefix = TIRPrefix(tieps=tieps)
         sti_series = STISeries(series_id=0, stis_list=stis_list)
         self._format_for_tirp_prefix_detection(tirp_prefix=tirp_prefix,
                                                sti_series=sti_series,
@@ -220,7 +220,7 @@ class TestTIRPPrefixDetection(unittest.TestCase):
 
         expected_instances = {'+2[2]<+1[5]<-2[8]<-1[15]<+1[18]<-1[22]'}
 
-        tirp_prefix = TIRPPrefix(tieps=tieps)
+        tirp_prefix = TIRPrefix(tieps=tieps)
         sti_series = STISeries(series_id=0, stis_list=stis_list)
         self._format_for_tirp_prefix_detection(tirp_prefix=tirp_prefix,
                                                sti_series=sti_series,
@@ -254,7 +254,7 @@ class TestTIRPPrefixDetection(unittest.TestCase):
 
         expected_instances = {'+2[2]<+1[5]<-2[8]<-1[15]'}
 
-        tirp_prefix = TIRPPrefix(tieps=tieps)
+        tirp_prefix = TIRPrefix(tieps=tieps)
         sti_series = STISeries(series_id=0, stis_list=stis_list)
         self._format_for_tirp_prefix_detection(tirp_prefix=tirp_prefix,
                                                sti_series=sti_series,
@@ -287,7 +287,7 @@ class TestTIRPPrefixDetection(unittest.TestCase):
 
         expected_instances = {}
 
-        tirp_prefix = TIRPPrefix(tieps=tieps)
+        tirp_prefix = TIRPrefix(tieps=tieps)
         sti_series = STISeries(series_id=0, stis_list=stis_list)
         self._format_for_tirp_prefix_detection(tirp_prefix=tirp_prefix,
                                                sti_series=sti_series,
@@ -319,7 +319,7 @@ class TestTIRPPrefixDetection(unittest.TestCase):
 
         expected_instances = {'+1[18]<-1[22]', '+1[5]<-1[15]'}
 
-        tirp_prefix = TIRPPrefix(tieps=tieps)
+        tirp_prefix = TIRPrefix(tieps=tieps)
         sti_series = STISeries(series_id=0, stis_list=stis_list)
         self._format_for_tirp_prefix_detection(tirp_prefix=tirp_prefix,
                                                sti_series=sti_series,
@@ -339,7 +339,7 @@ class TestTIRPPrefixDetection(unittest.TestCase):
 
         return STI(start_tiep, end_tiep)
 
-    def _format_for_tirp_prefix_detection(self, tirp_prefix: TIRPPrefix, sti_series: STISeries,
+    def _format_for_tirp_prefix_detection(self, tirp_prefix: TIRPrefix, sti_series: STISeries,
                                           expected_instances: set):
         """
         This function check whether the expected instances of the TIRP-prefix were detected in the STI list
@@ -349,7 +349,7 @@ class TestTIRPPrefixDetection(unittest.TestCase):
         :return:
         """
         print('TIRP-Prefix: \n' + tirp_prefix.get_tieps_str())
-        tirp_prefix_detection = TIRPPrefixDetection(tirp_prefix=tirp_prefix)
+        tirp_prefix_detection = TIRPrefixDetection(tirp_prefix=tirp_prefix)
 
         print('STI Series: \n' + sti_series.get_stis_str())
         time_point_series: TimePointSeries = sti_series.get_time_points()

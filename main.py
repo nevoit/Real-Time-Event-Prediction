@@ -1,7 +1,7 @@
 import const
 from prediction.count_simulator import ContSimulator
 from prediction.evaluate import Evaluate
-import read_files
+from input import read_files
 from os import path
 
 from prediction.tirp_comp import TIRPCompletion

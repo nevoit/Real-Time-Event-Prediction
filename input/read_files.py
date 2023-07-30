@@ -11,7 +11,7 @@ from core_comp.tirp import TIRP
 
 def read_patterns_file(file_path) -> list[TIRP]:
     """
-    This function read the patterns file and creates list of TIRP objects
+    this function read the patterns file and creates list of TIRP objects
     :param file_path: path of the file
     :return: list of TIRP objects
     """
@@ -38,7 +38,7 @@ def read_patterns_file(file_path) -> list[TIRP]:
 
 def read_sti_file(file_path) -> STIDB:
     """
-    This function reads the STIs data and creates relevant objects.
+    this function reads the STIs data and creates relevant objects.
     :param file_path: path of the file
     :return: STIDB: list of STI series
     """

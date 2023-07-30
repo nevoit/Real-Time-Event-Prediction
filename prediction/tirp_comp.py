@@ -8,8 +8,8 @@ from core_comp.time_point_series import TimePointSeries
 from core_comp.tirp import TIRP
 from tirp_based_model import TIRPBasedModel, SCPM, XGBCls, GLM
 from tirp_comp_insts import TIRPCompletionInstances
-from tirp_prefixes.tirp_prefix import TIRPPrefix
-from tirp_prefixes.tirp_prefix_detection import TIRPPrefixDetection
+from tirp_prefixes.tirp_prefix import TIRPrefix
+from tirp_prefixes.tirp_prefix_detection import TIRPrefixDetection
 from tirp_prefixes.tirp_prefix_insts import TIRPPrefixInstances
 
 
@@ -21,7 +21,7 @@ class TIRPCompletion:
         # get the tiep order and ignore the ending tiep of the event of interest.
         # the assumption is the event ot interest ending tiep is always the last tiep
         self._tiep_order: list[list[Tiep]] = tirp.get_sorted_tieps()[:-1]
-        self._tiep_prefixes: list[TIRPPrefix] = self._get_tirp_prefixes()
+        self._tiep_prefixes: list[TIRPrefix] = self._get_tirp_prefixes()
         self._tirp_prefixes_instances = TIRPCompletionInstances(tirp=self.tirp)
         self._detect_tirp_prefixes(sti_train_set)
 
@@ -36,14 +36,14 @@ class TIRPCompletion:
         self.prob_model = {}
         self.time_model = {}
 
-    def _get_tirp_prefixes(self) -> list[TIRPPrefix]:
+    def _get_tirp_prefixes(self) -> list[TIRPrefix]:
         # This function returns a list of TIRP prefixes
         tiep_prefixes = []
         for i in range(len(self._tiep_order)):
-            tiep_prefixes.append(TIRPPrefix(tieps=self._tiep_order[:i + 1]))
+            tiep_prefixes.append(TIRPrefix(tieps=self._tiep_order[:i + 1]))
         return tiep_prefixes
 
-    def get_tirp_prefixes(self) -> list[TIRPPrefix]:
+    def get_tirp_prefixes(self) -> list[TIRPrefix]:
         return self._tiep_prefixes
 
     def get_tirp(self) -> TIRP:
@@ -56,7 +56,7 @@ class TIRPCompletion:
         for sti_series in train_set_with_event:
             self.event_occr_time[sti_series.get_series_id()] = sti_series.get_last_sti_end_time()
 
-        train_set_without_event: list[STISeries] = [s for s in sti_train_set.sti_series_list if
+        train_set_without_event: list[STISeries] = [s for s in sti_train_set._sti_series_list if
                                                     not s.is_symbol_in_series(const.EVENT_INDEX)]
 
         for i, tirp_prefix in enumerate(self._tiep_prefixes):
@@ -68,12 +68,12 @@ class TIRPCompletion:
             self._tirp_prefixes_instances.add_tirp_prefix_wo_event(tirp_prefix_id=i,
                                                                    tirp_prefix_insts=inst_wo_event)
 
-    def _detect_tirp_prefix_for_db(self, tirp_prefix: TIRPPrefix, db: list[STISeries]):
+    def _detect_tirp_prefix_for_db(self, tirp_prefix: TIRPrefix, db: list[STISeries]):
         tirp_prefix_instances: TIRPPrefixInstances = TIRPPrefixInstances(tirp_prefix)
         for sti_series in db:
             sti_series_id = sti_series.get_series_id()
             time_point_series: TimePointSeries = sti_series.get_time_points()
-            tirp_pfx_detect = TIRPPrefixDetection(tirp_prefix=tirp_prefix)
+            tirp_pfx_detect = TIRPrefixDetection(tirp_prefix=tirp_prefix)
             tirp_pfx_insts: list[TimePointSeries] = tirp_pfx_detect.detect(sti_series_id=sti_series_id,
                                                                            time_point_series=time_point_series)
             for inst_j, inst in enumerate(tirp_pfx_insts):

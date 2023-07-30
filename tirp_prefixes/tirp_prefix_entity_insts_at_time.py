@@ -1,9 +1,12 @@
 from core_comp.time_point_series import TimePointSeries
-from tirp_prefix_detection import TIRPPrefixDetection
+from tirp_prefix_detection import TIRPrefixDetection
 from tirp_prefix_insts import TIRPPrefixInstances
 
 
 class TIRPrefixEntityInstsAtTime:
+    """
+    this class represents the instances at a specific time of a TIRP prefix
+    """
     def __init__(self, entity_id, prefix_index, tirp_prefix, time_point_series):
         self._entity_id = entity_id
         self._prefix_index = prefix_index
@@ -13,7 +16,8 @@ class TIRPrefixEntityInstsAtTime:
         self._detect_instances()
 
     def _detect_instances(self):
-        tirp_pfx_detect = TIRPPrefixDetection(tirp_prefix=self._tirp_prefix)
+        # this function applies the detection of instances
+        tirp_pfx_detect = TIRPrefixDetection(tirp_prefix=self._tirp_prefix)
         tirp_pfx_insts: list[TimePointSeries] = tirp_pfx_detect.detect(sti_series_id=self._entity_id,
                                                                        time_point_series=self._time_point_series)
         for inst_j, inst in enumerate(tirp_pfx_insts):
