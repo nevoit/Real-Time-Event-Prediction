@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 
-from tirp import TIRP
-from tirp_prefix_insts import TIRPPrefixInstances
+from core_comp.tirp import TIRP
+from tirp_prefixes.tirp_prefix_insts import TIRPPrefixInstances
 
 
 class TIRPCompletionInstances:
@@ -15,13 +15,13 @@ class TIRPCompletionInstances:
         self.support = {}
 
     def add_tirp_prefix_w_event(self, tirp_prefix_id: int, tirp_prefix_insts: TIRPPrefixInstances):
-        self._add_tirp_prefix(tirp_prefix_id, tirp_prefix_insts, w=True)
+        self._add_tirp_prefix(tirp_prefix_id, tirp_prefix_insts, w_event=True)
 
     def add_tirp_prefix_wo_event(self, tirp_prefix_id: int, tirp_prefix_insts: TIRPPrefixInstances):
-        self._add_tirp_prefix(tirp_prefix_id, tirp_prefix_insts, w=False)
+        self._add_tirp_prefix(tirp_prefix_id, tirp_prefix_insts, w_event=False)
 
-    def _add_tirp_prefix(self, tirp_prefix_id: int, tirp_prefix_insts: TIRPPrefixInstances, w: bool):
-        if w:
+    def _add_tirp_prefix(self, tirp_prefix_id: int, tirp_prefix_insts: TIRPPrefixInstances, w_event: bool):
+        if w_event:
             dict_ref = self._tirp_prefixes_instances_w_event
         else:
             dict_ref = self._tirp_prefixes_instances_wo_event
@@ -37,17 +37,15 @@ class TIRPCompletionInstances:
 
         inst_w_dict: dict = self._tirp_prefixes_instances_w_event[tirp_prefix_id].get_instances()
         for s_id, s_val in inst_w_dict.items():
-            occr_time = self.event_occr_time[s_id]
-            for j, inst_v in enumerate(s_val):  # could be multiple instances for each entity
-                self._add_inst_to_dict(inst_index=f'{s_id}_{j}', inst=inst_v, feature_dict=feature_dict,
-                                       class_val=1, occur_time=occr_time)
+            occr_time = self.event_occr_time[s_val.get_entity_id()]
+            self._add_inst_to_dict(inst_index=s_id, inst=s_val, feature_dict=feature_dict,
+                                   class_val=1, occur_time=occr_time)
 
         inst_wo_dict: dict = self._tirp_prefixes_instances_wo_event[tirp_prefix_id].get_instances()
         for s_id, s_val in inst_wo_dict.items():
-            for j, inst_v in enumerate(s_val):  # could be multiple instances for each entity
-                occr_time = -1
-                self._add_inst_to_dict(inst_index=f'{s_id}_{j}', inst=inst_v, feature_dict=feature_dict,
-                                       class_val=0, occur_time=occr_time)
+            occr_time = -1
+            self._add_inst_to_dict(inst_index=s_id, inst=s_val, feature_dict=feature_dict,
+                                   class_val=0, occur_time=occr_time)
 
         df_feature_matrix = pd.DataFrame.from_dict(feature_dict)
         df_feature_matrix = df_feature_matrix.set_index('index')

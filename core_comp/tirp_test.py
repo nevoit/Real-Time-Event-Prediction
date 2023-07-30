@@ -1,7 +1,7 @@
 import unittest
 
 import const
-from tirp import TIRP
+from core_comp.tirp import TIRP
 
 
 class TestTIRP(unittest.TestCase):

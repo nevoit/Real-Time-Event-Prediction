@@ -1,4 +1,4 @@
-from time_point_series import TimePointSeries
+from core_comp.time_point_series import TimePointSeries
 from tirp_prefix import TIRPPrefix
 
 
@@ -15,14 +15,16 @@ class TIRPPrefixInstances:
         self.tirp_prefix = tirp_prefix
         self.instances = {}
 
-    def add_instance(self, inst_id: int, inst: TimePointSeries):
+    def add_instance(self, entity_id: int, inst_id: int, inst: TimePointSeries):
         """
         This function gets instance that represented by time point series
         and adds this instances to the list of instances
         """
-        if inst_id not in self.instances.keys():
-            self.instances[inst_id] = []
-        self.instances[inst_id].append(inst)
+        assert isinstance(inst, TimePointSeries), "Oh no! Wrong type input for this function!"
+        self.instances[f'{entity_id}_{inst_id}'] = inst
 
     def get_instances(self):
         return self.instances
+
+    def get_num_of_instances(self):
+        return len(self.instances)

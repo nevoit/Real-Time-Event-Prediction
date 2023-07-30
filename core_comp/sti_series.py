@@ -1,3 +1,4 @@
+import const
 from sti import STI
 from tiep_series import TiepSeries
 from time_point_series import TimePointSeries
@@ -12,7 +13,7 @@ class STISeries:
         self.series_id: int = series_id
         self.stis: list = self._sort_sti_list(stis_list)
         self.tieps: TiepSeries = TiepSeries(stis_list=stis_list)
-        self.time_points: TimePointSeries = TimePointSeries(tiep_series=self.tieps)
+        self.time_points: TimePointSeries = TimePointSeries(entity_id=series_id, tiep_series=self.tieps)
         self._check_input_validity()
 
     def get_stis_str(self):
@@ -32,10 +33,21 @@ class STISeries:
             sti_str += f'{space_str}{interval_str} \n'
         return sti_str
 
-    def get_last_sti_start_time(self) -> int:
+    def get_first_sti_start_time(self) -> int:
+        # This is used to get the event start time in entities with events
+        first_sti: STI = self.stis[0]
+        return first_sti.get_start_time()
+
+    def get_last_sti_end_time(self) -> int:
         # This is used to get the event start time in entities with events
         last_sti: STI = self.stis[-1]
-        return last_sti.get_start_time()
+        if last_sti.get_symbol_id() == const.EVENT_INDEX:
+            return last_sti.get_start_time()
+        else:
+            return last_sti.get_end_time()
+
+    def get_start_to_end_time_timestamp_list(self) -> list:
+        return list(range(self.get_first_sti_start_time(), self.get_last_sti_end_time()))
 
     def get_series_id(self):
         return self.series_id
@@ -45,6 +57,15 @@ class STISeries:
 
     def get_time_points(self):
         return self.time_points
+
+    def get_time_points_at(self, until_time):
+        # returns only time points that before the given time
+        tps = self.time_points.get_time_point_series()
+        time_point_series_at = TimePointSeries(entity_id=self.series_id)
+        for tp in tps:
+            if tp.get_time() < until_time:
+                time_point_series_at.add_time_point(time_point=tp)
+        return time_point_series_at
 
     def _sort_sti_list(self, stis_list):
         return sorted(stis_list, key=self.sort_sti)

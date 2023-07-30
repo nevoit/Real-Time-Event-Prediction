@@ -5,12 +5,16 @@ from time_point import TimePoint
 
 
 class TimePointSeries:
-    def __init__(self, tiep_series: TiepSeries = None):
+    def __init__(self, entity_id, tiep_series: TiepSeries = None):
+        self.entity_id = entity_id
         if tiep_series is not None:
             self.time_point_series: list[TimePoint] = self._create_time_point_series(tiep_series)
         else:
             self.time_point_series: list[TimePoint] = []
 
+    def get_entity_id(self):
+        return self.entity_id
+    
     @staticmethod
     def _create_time_point_series(tiep_series: TiepSeries) -> list[TimePoint]:
         time_point_series = {}

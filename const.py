@@ -1,5 +1,17 @@
 EVENT_INDEX = 999
 
+# Input folders and files names
+INPUT_FOLDER = 'input'
+STI_DATA_FOLDER = 'STI data'
+STI_TRAIN_FILE_NAME = 'sti_train.csv'
+STI_TEST_FILE_NAME = 'sti_test.csv'
+PATTERNS_FILE_NAME = 'patterns.csv'
+RAW_DATA_FOLDER = 'Raw data'
+RAW_TRAIN_FILE_NAME = 'raw_train.csv'
+RAW_Y_TRAIN_FILE_NAME = 'train_class.csv'
+RAW_TEST_FILE_NAME = 'raw_test.csv'
+RAW_Y_TEST_FILE_NAME = 'test_class.csv'
+
 # Temporal relations
 TEMP_REL_BEFORE = 'b'
 TEMP_REL_MEETS = 'm'
@@ -26,3 +38,11 @@ PAT_STIS_COL_NAME = 'STIs'
 PAT_TEMP_RELS_COL_NAME = 'TempRels'
 PAT_TEMP_VS_COL_NAME = 'VerSupp'
 PAT_TEMP_HS_COL_NAME = 'HorSupp'
+
+# Models available
+MOD_CLS_SCPM_NAME = 'SCPM'
+MOD_CLS_XGB_NAME = 'XGB'
+MOD_REG_GAM_GLM_NAME = 'GammaRegressor'
+
+# Aggregation function
+AGG_FUN_MEAN = 'mean'

@@ -1,9 +1,9 @@
 import copy
 from typing import Optional
 
-from tiep import Tiep
-from time_point import TimePoint
-from time_point_series import TimePointSeries
+from core_comp.tiep import Tiep
+from core_comp.time_point import TimePoint
+from core_comp.time_point_series import TimePointSeries
 from tirp_prefix import TIRPPrefix
 
 
@@ -39,7 +39,7 @@ class TIRPPrefixDetection:
                 tieps_inst.append(con_tieps)  # add tieps
         return tieps_inst
 
-    def detect(self, time_point_series: TimePointSeries) -> list[TimePointSeries]:
+    def detect(self, sti_series_id: int, time_point_series: TimePointSeries) -> list[TimePointSeries]:
         """
         This function detects instances of the TIRP-prefix in the given sorted time point series.
         The function is making sure the unfinished STIs were not finished before the series was appeared.
@@ -51,7 +51,7 @@ class TIRPPrefixDetection:
             pot_tieps_to_extend = self._find_tieps_in_time_point(tieps=tieps, time_point_series=time_point_series)
             if tieps_i == 0:  # iterates over the first pattern's tieps
                 for tp in pot_tieps_to_extend:
-                    tps = TimePointSeries()
+                    tps = TimePointSeries(entity_id=sti_series_id)
                     tps.add_time_point(tp)
                     tirp_prefix_insts.append(tps)
             else:  # check if the previous tieps can be extended

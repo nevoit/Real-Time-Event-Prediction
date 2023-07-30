@@ -1,12 +1,12 @@
 import const
-from sti import STI
-from sti_db import STIDB
-from sti_series import STISeries
-from tiep import Tiep
+from core_comp.sti import STI
+from core_comp.sti_db import STIDB
+from core_comp.sti_series import STISeries
+from core_comp.tiep import Tiep
 import pandas as pd
 import ast
 
-from tirp import TIRP
+from core_comp.tirp import TIRP
 
 
 def read_patterns_file(file_path) -> list[TIRP]:

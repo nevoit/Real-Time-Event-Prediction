@@ -1,10 +1,10 @@
 import unittest
 
 import const
-from sti import STI
-from sti_series import STISeries
-from tiep import Tiep
-from time_point_series import TimePointSeries
+from core_comp.sti import STI
+from core_comp.sti_series import STISeries
+from core_comp.tiep import Tiep
+from core_comp.time_point_series import TimePointSeries
 from tirp_prefix import TIRPPrefix
 from tirp_prefix_detection import TIRPPrefixDetection
 
@@ -355,7 +355,8 @@ class TestTIRPPrefixDetection(unittest.TestCase):
         time_point_series: TimePointSeries = sti_series.get_time_points()
         print('Time Point Series: \n' + time_point_series.get_tiep_str())
 
-        tirp_pfx_insts: list[TimePointSeries] = tirp_prefix_detection.detect(time_point_series=time_point_series)
+        tirp_pfx_insts: list[TimePointSeries] = tirp_prefix_detection.detect(sti_series_id=sti_series.get_series_id(),
+                                                                             time_point_series=time_point_series)
 
         print(f'Instances {len(tirp_pfx_insts)}:')
         tirp_pfx_srt_insts = []
