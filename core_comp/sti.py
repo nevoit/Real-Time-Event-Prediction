@@ -1,4 +1,4 @@
-from tiep import Tiep
+from core_comp.tiep import Tiep
 
 
 class STI:

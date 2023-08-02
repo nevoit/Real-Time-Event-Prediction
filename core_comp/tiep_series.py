@@ -1,5 +1,5 @@
-from sti import STI
-from tiep import Tiep
+from core_comp.sti import STI
+from core_comp.tiep import Tiep
 
 
 class TiepSeries:

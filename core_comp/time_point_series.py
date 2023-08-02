@@ -1,7 +1,7 @@
 import const
-from tiep import Tiep
-from tiep_series import TiepSeries
-from time_point import TimePoint
+from core_comp.tiep import Tiep
+from core_comp.tiep_series import TiepSeries
+from core_comp.time_point import TimePoint
 
 
 class TimePointSeries:

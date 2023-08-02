@@ -1,5 +1,5 @@
-from mul_tirps import MulTIRPs
-from pred_at_time import PredAtTime
+from prediction.mul_tirps import MulTIRPs
+from prediction.pred_at_time import PredAtTime
 from core_comp.sti_series import STISeries
 from core_comp.time_point_series import TimePointSeries
 from core_comp.tirp import TIRP

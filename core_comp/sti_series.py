@@ -1,7 +1,7 @@
 import const
-from sti import STI
-from tiep_series import TiepSeries
-from time_point_series import TimePointSeries
+from core_comp.sti import STI
+from core_comp.tiep_series import TiepSeries
+from core_comp.time_point_series import TimePointSeries
 
 
 class STISeries:

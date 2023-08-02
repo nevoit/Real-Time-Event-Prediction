@@ -1,6 +1,6 @@
 from core_comp.time_point_series import TimePointSeries
-from tirp_prefix_detection import TIRPrefixDetection
-from tirp_prefix_insts import TIRPPrefixInstances
+from tirp_prefixes.tirp_prefix_detection import TIRPrefixDetection
+from tirp_prefixes.tirp_prefix_insts import TIRPPrefixInstances
 
 
 class TIRPrefixEntityInstsAtTime:

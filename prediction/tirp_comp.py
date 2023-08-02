@@ -6,8 +6,8 @@ from core_comp.sti_series import STISeries
 from core_comp.tiep import Tiep
 from core_comp.time_point_series import TimePointSeries
 from core_comp.tirp import TIRP
-from tirp_based_model import TIRPBasedModel, SCPM, XGBCls, GLM
-from tirp_comp_insts import TIRPCompletionInstances
+from prediction.tirp_based_model import TIRPBasedModel, SCPM, XGBCls, GLM
+from prediction.tirp_comp_insts import TIRPCompletionInstances
 from tirp_prefixes.tirp_prefix import TIRPrefix
 from tirp_prefixes.tirp_prefix_detection import TIRPrefixDetection
 from tirp_prefixes.tirp_prefix_insts import TIRPPrefixInstances

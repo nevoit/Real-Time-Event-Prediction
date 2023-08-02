@@ -1,5 +1,5 @@
 from core_comp.time_point_series import TimePointSeries
-from tirp_prefix import TIRPrefix
+from tirp_prefixes.tirp_prefix import TIRPrefix
 
 
 class TIRPPrefixInstances:

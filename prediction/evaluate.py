@@ -1,6 +1,6 @@
 import numpy as np
 
-from pred_at_time import PredAtTime
+from prediction.pred_at_time import PredAtTime
 
 from sklearn.metrics import auc
 
