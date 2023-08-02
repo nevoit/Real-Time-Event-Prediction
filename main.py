@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
     # This block iterates over the TIRPs and for each pattern learns a completion model (probability and time to event)
     tirp_comp_models: list = []
-    for tirp in tirps_list[:15]:
+    for tirp in tirps_list[:10]:
         tirp_comp = TIRPCompletion(tirp=tirp, sti_train_set=train_set)
         tirp_comp.learn_occ_prob_model(cls_name=const.MOD_CLS_SCPM_NAME)
         tirp_comp.learn_occ_prob_model(cls_name=const.MOD_CLS_XGB_NAME)
@@ -38,13 +38,13 @@ if __name__ == '__main__':
 
     # This block iterates over the entities in the test data and predicts the probability and time of the event
     pred_over_time: dict = {}
-    for entity in test_set.get_sti_series():
+    for entity in test_set.get_sti_series()[:10]:
         cont_sim = ContSimulator(tirp_comp_list=tirp_comp_models, entity=entity)
         cont_sim.predict_proba_plus_time(prob_cls_name=const.MOD_CLS_XGB_NAME,
                                          time_cls_model=const.MOD_REG_GAM_GLM_NAME)
         cont_sim.agg_prob_plus_time(agg_func=const.AGG_FUN_MEAN)
         pred_over_time[entity.get_series_id()] = cont_sim.get_agg_pred()
-        # cont_sim.plot_prediction()
+        cont_sim.plot_prediction()
 
     # Evaluates the learned model
     eval_model = Evaluate(actual_labels=test_set_labels,
