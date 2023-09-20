@@ -50,23 +50,24 @@ class Evaluate:
         tp, fp, tn, fn, ftp, ffp = 0, 0, 0, 0, 0, 0
         for entity_id, pred_at_time in entities_decisions.items():
             dec = pred_at_time.get_decision()
-            actual_dec = self._actual_labels[entity_id]
+            actual_label = self._actual_labels[entity_id]
 
             curr_time = pred_at_time.get_curr_time()
             tte_est = pred_at_time.get_est_tte()
             actual_time = self._actual_event_time[entity_id]
 
             if dec:
-                if actual_dec and (curr_time + tte_est - w) <= actual_time <= (curr_time + tte_est + w):
+                # In case that actual label is False the actual time must be None
+                if actual_label and (curr_time + tte_est - w) <= actual_time <= (curr_time + tte_est + w):
                     tp += 1
                 else:
                     fp += 1
-                    if actual_dec:
+                    if actual_label:
                         ftp += 1
                     else:
                         ffp += 1
             else:
-                if actual_dec:
+                if actual_label:
                     fn += 1
                 else:
                     tn += 1

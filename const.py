@@ -1,3 +1,4 @@
+# The data should contain events with symbol and variable id with the same value
 EVENT_INDEX = 999
 
 # Input folders and files names
