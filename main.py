@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
     # This block iterates over the TIRPs and for each pattern learns a completion model (probability and time to event)
     tirp_comp_models: list = []
-    for tirp in tirps_list[:15]:
+    for tirp in tirps_list[:50]:
         tirp_comp = TIRPCompletion(tirp=tirp, sti_train_set=train_set)
         tirp_comp.learn_occ_prob_model(cls_name=const.MOD_CLS_SCPM_NAME)
         tirp_comp.learn_occ_prob_model(cls_name=const.MOD_CLS_XGB_NAME)
@@ -42,17 +42,17 @@ if __name__ == '__main__':
 
     # This block iterates over the entities in the test data and predicts the probability and time of the event
     pred_over_time: dict = {}
-    for entity in test_set.get_sti_series():
+    for entity in test_set.get_sti_series()[:100]:
         cont_sim = ContSimulator(tirp_comp_list=tirp_comp_models, entity=entity)
         cont_sim.predict_proba_plus_time(prob_cls_name=const.MOD_CLS_XGB_NAME,
                                          time_cls_model=const.MOD_REG_GAM_GLM_NAME)
         cont_sim.agg_prob_plus_time(agg_func=const.AGG_FUN_MEAN)
         pred_over_time[entity.get_series_id()] = cont_sim.get_agg_pred()
-        cont_sim.plot_prediction()
+        # cont_sim.plot_prediction()
 
     # Evaluates the learned model
     eval_model = Evaluate(actual_labels=test_set_labels,
                           actual_event_time=test_set_times,
                           pred_over_time=pred_over_time)
-    auc_roc, auc_prc = eval_model.evaluate_per_w_tau(eval_model=eval_model, tau=2, w=1)
+    auc_roc, auc_prc = eval_model.evaluate_per_w_tau(eval_model=eval_model, tau=0, w=5)
     print(f'AUC-ROC: {auc_roc}, AUPRC: {auc_prc}')
