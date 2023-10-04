@@ -10,7 +10,7 @@ class TIRPCompletionInstances:
         self.tirp: TIRP = tirp
         self._tirp_prefixes_instances_w_event = {}
         self._tirp_prefixes_instances_wo_event = {}
-        self.event_occr_time = None
+        self.event_occur_time = None
         self.feature_matrices = {}
         self.support = {}
 
@@ -37,7 +37,7 @@ class TIRPCompletionInstances:
 
         inst_w_dict: dict = self._tirp_prefixes_instances_w_event[tirp_prefix_id].get_instances()
         for s_id, s_val in inst_w_dict.items():
-            occr_time = self.event_occr_time[s_val.get_entity_id()]
+            occr_time = self.event_occur_time[s_val.get_entity_id()]
             self._add_inst_to_dict(inst_index=s_id, inst=s_val, feature_dict=feature_dict,
                                    class_val=1, occur_time=occr_time)
 
@@ -79,16 +79,63 @@ class TIRPCompletionInstances:
                 feature_dict['tte'].append(tte_first - j + 1)
 
     def compute_prob(self):
+        """
+        The function computes the probabilities for each prefix of the pattern,
+        considering instances that occurred more than once in an entity only once.
+
+        ***Note***
+            Instances that occurred more than once in an entity must be considered only once, otherwise,
+            this can cause problems (especially when the temporal relation "before" is involved)
+            and in some cases lead to values greater than one, which is not a probability.
+
+        ***For example***
+            Consider the following database with three entities (E1, E2, E3) and the current pattern Q={A<B, A<y, B<y}:
+
+            (E1) (A+)---A-----(A-)    (B+)-----B------(B-)   (B+)-----B------(B-)           y+
+            (E2) (A+)---A-----(A-)        (B+)-----B------(B-)   (B+)-----B------(B-)       y+
+            (E3) (A+)---A-----(A-)        (B+)-----B------(B-)   (B+)-----B------(B-)
+
+            Let's represent Q as a sequence of time interval endpoints: A+<A-<B+<B-<y+
+
+            * Counting the number of instances for the earliest prefix A+ in DB results in 3 instances.
+            * Counting the number instances of the prefix A+<A-<B+ in DB results in 6 instances (2 per entity).
+            * Counting the number instances of Q=A+<A-<B+<B-<y+ in DB results in 4 instances (2 per E1 and E2).
+
+            To compute the probability P(Q|tc) for the completion of a pattern at current time tc,
+            the number of instances of Q is divided by the number of instances of the current prefix.
+
+        ***Problems***
+            (1) Given prefix A+ is observed the probability of seeing Q is greater than one 4/3 > 1, which is incorrect.
+            (2) The probabilities for pattern completion should increase as more of the pattern is revealed.
+                However, in the example given, the probability decreases from 4/3 (given A+) to 4/6 (given A+<A-<B+).
+
+        ***Solution***
+            Consider instances that occurred more than once in an entity only once.
+
+            Let's try to compute the probabilities again:
+
+            * Counting the number of instances for the earliest prefix A+ in DB results in 3 instances.
+            * Counting the number instances of the prefix A+<A-<B+ in DB results in 3 instances (1 per entity).
+            * Counting the number instances of Q=A+<A-<B+<B-<y+ in DB results in 2 instances (1 per E1 and E2).
+
+            Solved!
+
+        ***Things to consider in the future***
+            * The number of instances per entity could help to predict the event of interest y,
+            but the above method solution ignores this.
+        """
         num_of_prefixes = len(self._tirp_prefixes_instances_w_event)
-        sup_q = len(self._tirp_prefixes_instances_w_event[num_of_prefixes - 1].get_instances())
+        # Pattern Q: Consider instances that occurred more than once in an entity only once
+        sup_q = self._tirp_prefixes_instances_w_event[num_of_prefixes - 1].get_unique_num_of_instances()
         for i in range(num_of_prefixes):
-            sup_i = len(self._tirp_prefixes_instances_w_event[i].get_instances()) \
-                    + len(self._tirp_prefixes_instances_wo_event[i].get_instances())
+            # i-th Q-Prefix: Consider instances that occurred more than once in an entity only once
+            sup_i = self._tirp_prefixes_instances_w_event[i].get_unique_num_of_instances() \
+                    + self._tirp_prefixes_instances_wo_event[i].get_unique_num_of_instances()
             self.support[i] = sup_q / sup_i
 
-    def generate_feature_matrices(self, event_occr_time):
-        # This function returns feature matrix for each TIRP prefix
-        self.event_occr_time = event_occr_time
+    def generate_feature_matrices(self, event_occur_time):
+        # This function returns feature matrix for each pattern prefix
+        self.event_occur_time = event_occur_time
         for i in range(1, self.tirp.get_tieps_num() - 1):
             # The first feature matrix is not relevant as it contains not duration
             self._generate_feature_matrix(tirp_prefix_id=i)

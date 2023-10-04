@@ -48,7 +48,7 @@ if __name__ == '__main__':
                                          time_cls_model=const.MOD_REG_GAM_GLM_NAME)
         cont_sim.agg_prob_plus_time(agg_func=const.AGG_FUN_MEAN)
         pred_over_time[entity.get_series_id()] = cont_sim.get_agg_pred()
-        # cont_sim.plot_prediction()
+        cont_sim.plot_prediction()
 
     # Evaluates the learned model
     eval_model = Evaluate(actual_labels=test_set_labels,

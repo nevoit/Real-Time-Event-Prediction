@@ -26,7 +26,7 @@ class TIRPCompletion:
         self._detect_tirp_prefixes(sti_train_set)
 
         self._tirp_prefixes_instances.compute_prob()
-        self._tirp_prefixes_instances.generate_feature_matrices(event_occr_time=self.event_occr_time)
+        self._tirp_prefixes_instances.generate_feature_matrices(event_occur_time=self.event_occr_time)
 
         # Create feature matrix for each TIRP prefix
         self.feature_matrices = self._tirp_prefixes_instances.get_feature_matrices()

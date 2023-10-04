@@ -13,7 +13,7 @@ class TIRPPrefixInstances:
 
         """
         self._tirp_prefix = tirp_prefix
-        self._instances = {}
+        self._instances: dict[str:TimePointSeries] = {}
 
     def add_instance(self, entity_id: int, inst_id: int, inst: TimePointSeries):
         """
@@ -23,8 +23,13 @@ class TIRPPrefixInstances:
         assert isinstance(inst, TimePointSeries), "Oh no! Wrong type input for this function!"
         self._instances[f'{entity_id}_{inst_id}'] = inst
 
-    def get_instances(self) -> dict[str: TimePointSeries]:
+    def get_instances(self) -> dict[str:TimePointSeries]:
         return self._instances
 
     def get_num_of_instances(self) -> int:
         return len(self._instances)
+
+    def get_unique_num_of_instances(self) -> int:
+        # Consider instances that occurred more than once in an entity only once
+        unique_entities = {tps.get_entity_id() for tps in self._instances.values()}
+        return len(unique_entities)
