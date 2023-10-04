@@ -33,7 +33,6 @@ class TIRPBasedModel:
 
 
 class SCPM:
-    #TODO: make it VS
     def __init__(self, prob):
         self.prob = prob
 
