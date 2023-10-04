@@ -134,8 +134,11 @@ class TIRPCompletion:
         return reg.predict_time(inst_row)
 
     def post_training_deletion(self):
-        # Remove unnecessary training artifacts that could consume a lot of memory.
-        # Thanks to @LiorTkach for his suggestion to add that.
+        """
+        Remove unnecessary training structures to save memory, unless they are needed for lazy models such as KNN.
+
+        Thanks to @LiorTkach for his suggestion to add that.
+        """
         self.feature_matrices = None
         self._tirp_prefixes_instances = None
 

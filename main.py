@@ -39,6 +39,7 @@ if __name__ == '__main__':
         tirp_comp.learn_occ_prob_model(cls_name=const.MOD_CLS_XGB_NAME)
         tirp_comp.learn_occ_time_model(cls_name=const.MOD_REG_GAM_GLM_NAME)
         tirp_comp_models.append(tirp_comp)
+        tirp_comp.post_training_deletion()
 
     # This block iterates over the entities in the test data and predicts the probability and time of the event
     pred_over_time: dict = {}
