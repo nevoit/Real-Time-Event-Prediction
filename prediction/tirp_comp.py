@@ -1,3 +1,5 @@
+import gc
+
 import pandas as pd
 
 import const
@@ -130,3 +132,11 @@ class TIRPCompletion:
             print("WRONG LOGIC!")
         reg = self.time_model[reg_name][prefix_index + 1]
         return reg.predict_time(inst_row)
+
+    def post_training_deletion(self):
+        # Remove unnecessary training artifacts that could consume a lot of memory.
+        # Thanks to @LiorTkach for his suggestion to add that.
+        self.feature_matrices = None
+        self._tirp_prefixes_instances = None
+
+        gc.collect()

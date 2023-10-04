@@ -123,6 +123,8 @@ class TIRPCompletionInstances:
         ***Things to consider in the future***
             * The number of instances per entity could help to predict the event of interest y,
             but the above method solution ignores this.
+
+        ***Thanks to @TaliMalenboim for debugging this function
         """
         num_of_prefixes = len(self._tirp_prefixes_instances_w_event)
         # Pattern Q: Consider instances that occurred more than once in an entity only once
