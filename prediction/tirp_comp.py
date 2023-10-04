@@ -6,7 +6,10 @@ from core_comp.sti_series import STISeries
 from core_comp.tiep import Tiep
 from core_comp.time_point_series import TimePointSeries
 from core_comp.tirp import TIRP
-from prediction.tirp_based_model import TIRPBasedModel, SCPM, XGBCls, GLM
+from prediction.tirp_based_model import TIRPBasedModel
+from prediction.model_scpm_cls import SCPMCls
+from prediction.model_xgb_cls import XGBCls
+from prediction.model_gamma_reg import GammaReg
 from prediction.tirp_comp_insts import TIRPCompletionInstances
 from tirp_prefixes.tirp_prefix import TIRPrefix
 from tirp_prefixes.tirp_prefix_detection import TIRPrefixDetection
@@ -86,7 +89,7 @@ class TIRPCompletion:
             cls = None
             if cls_name == const.MOD_CLS_SCPM_NAME:
                 prob = self.tirp_based_model.get_pref_sup(prefix_index=i)
-                cls = SCPM(prob=prob)
+                cls = SCPMCls(prob=prob)
             elif i > 0:
                 X, y = self.tirp_based_model.get_df_for_classification(prefix_index=i)
                 if cls_name == const.MOD_CLS_XGB_NAME:
@@ -100,7 +103,7 @@ class TIRPCompletion:
             cls = None
             X_tte, y_tte = self.tirp_based_model.get_df_for_regression(prefix_index=i)
             if cls_name == const.MOD_REG_GAM_GLM_NAME:
-                cls = GLM()
+                cls = GammaReg()
                 cls.fit(X=X_tte, y=y_tte)
             self.time_model[cls_name][i] = cls
 
