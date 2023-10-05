@@ -29,8 +29,9 @@
 </details>
 
 
-
 <!-- ABOUT THE PROJECT -->
+## About The Project
+
 Symbolic time intervals (STIs) are a powerful way to represent time-series data or real-life events with varying duration, such as traffic light timing or medical treatments. STIs can be used to uniformly represent heterogeneous multivariate temporal data (time point values, instantaneous events, or time intervals), including both event-driven measurements (e.g., traffic accidents) and manual measurements (e.g., blood tests).
 Temporal abstraction can be used to uniformly represent such heterogeneous multivariate temporal data using STIs. 
 Frequent time intervals-related patterns (TIRPs) can be discovered from the STI data, which have proven to be valuable for knowledge discovery, as well as for use as features in classification and prediction tasks.
