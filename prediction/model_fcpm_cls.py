@@ -174,7 +174,7 @@ class FCPMCls:
         # This function gets computes the psi\not psi probability per instance
         pi_prob = 1
         for j in range(self._di_len + 1):
-            dur = int(list(inst)[j])
+            dur = int(inst.values[0][j])
             if j == self._di_len:  # censoring - not a completed duration component
                 pi_prob *= self._censoring_prob(cdf=cdf[j], duration=dur)
             else:  # a completed duration component
