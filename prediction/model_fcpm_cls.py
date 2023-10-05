@@ -24,7 +24,7 @@ class FCPMCls:
         self._uncertainty_prob = params['uncertainty_prob']
         self._sample_to_gen = params['sample_to_gen']
         self._distributions = params['distributions']
-        self._default_dist =  params['default_dist']
+        self._default_dist = params['default_dist']
         self._default_dist_param = params['default_dist_param']
 
         self._dur_w = None
@@ -60,7 +60,7 @@ class FCPMCls:
     def _assign_cdf_pdf(self, durs: dict, pdfs: dict, cdfs: dict):
         # This function assigns the pdf and cdf to the relevant dictionaries
         for i, durations in durs.items():
-            cdf, pdf = self._get_pdf_cdf(durations)
+            pdf, cdf = self._get_pdf_cdf(durations)
             pdfs[i] = pdf
             cdfs[i] = cdf
 
@@ -188,8 +188,14 @@ class FCPMCls:
         cdf_min = min(cdf.index.values)
 
         if duration < cdf_min or duration > cdf_max:  # in case the duration is outside of the distribution
-            print("Check it out! the duration is outside of the distribution")
-            return self._uncertainty_prob
+            prob_to_return = self._uncertainty_prob
+            if duration - cdf_min < self._epsilon:  # if it close, estimate the closest duration
+                prob_to_return = self._calc_dist_prob(cdf, duration + self._epsilon)
+            elif cdf_max - duration < self._epsilon:
+                prob_to_return = self._calc_dist_prob(cdf, duration - self._epsilon)
+            else:
+                print("Check it out! the duration is outside of the distribution")
+            return prob_to_return
 
         top = min(cdf.index.values, key=lambda x: abs(x - (duration + self._epsilon)))
         closest_num_max = min(top, cdf_max)  # in case its after the distribution's maximum value
