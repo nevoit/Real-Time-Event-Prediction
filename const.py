@@ -43,7 +43,21 @@ PAT_TEMP_HS_COL_NAME = 'HorSupp'
 # Models available
 MOD_CLS_SCPM_NAME = 'SCPM'
 MOD_CLS_XGB_NAME = 'XGB'
+MOD_CLS_FCPM_NAME = 'FCPM'
 MOD_REG_GAM_GLM_NAME = 'GammaRegressor'
 
 # Aggregation function
 AGG_FUN_MEAN = 'mean'
+
+# Models params
+
+
+import scipy.stats as ss
+MOD_CLS_FCPM_PARAMS = {
+    'epsilon': 1,
+    'uncertainty_prob': 0.5,
+    'sample_to_gen': 10000,  # Number of samples to generate
+    'distributions': [ss.expon, ss.weibull_min, ss.lognorm, ss.pareto, ss.halfnorm, ss.exponweib],
+    'default_dist': ss.norm,
+    'default_dist_param': (0.0, 1.0)
+}

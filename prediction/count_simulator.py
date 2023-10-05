@@ -68,6 +68,8 @@ class ContSimulator:
     def plot_prediction(self):
         import seaborn as sns
         import pandas as pd
+        import matplotlib
+        matplotlib.use('TkAgg')
         import matplotlib.pyplot as plt
 
         df = pd.DataFrame({'Time': list(self.agg_pred.keys()),

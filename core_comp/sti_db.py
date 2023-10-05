@@ -10,6 +10,9 @@ class STIDB:
     def get_sti_series(self):
         return self._sti_series_list
 
+    def get_number_of_entities(self) -> int:
+        return len(self._sti_series_list)
+
     def _check_input_validity(self):
         # This function check the validity of the input and assert in case of wrong input
         if not len(self._sti_series_list) >= 0:

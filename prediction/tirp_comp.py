@@ -8,6 +8,7 @@ from core_comp.sti_series import STISeries
 from core_comp.tiep import Tiep
 from core_comp.time_point_series import TimePointSeries
 from core_comp.tirp import TIRP
+from prediction.model_fcpm_cls import FCPMCls
 from prediction.tirp_based_model import TIRPBasedModel
 from prediction.model_scpm_cls import SCPMCls
 from prediction.model_xgb_cls import XGBCls
@@ -22,6 +23,7 @@ class TIRPCompletion:
     def __init__(self, tirp: TIRP, sti_train_set: STIDB):
         self.tirp: TIRP = tirp
         self.event_occr_time = {}
+        self.number_of_entities: int = sti_train_set.get_number_of_entities()
 
         # get the tiep order and ignore the ending tiep of the event of interest.
         # the assumption is the event ot interest ending tiep is always the last tiep
@@ -85,7 +87,7 @@ class TIRPCompletion:
                 tirp_prefix_instances.add_instance(entity_id=sti_series_id, inst_id=inst_j, inst=inst)
         return tirp_prefix_instances
 
-    def learn_occ_prob_model(self, cls_name: str):
+    def learn_occ_prob_model(self, cls_name: str, params: dict = None):
         self.prob_model[cls_name] = {}
         for i in range(0, len(self.feature_matrices) + 1):
             cls = None
@@ -96,7 +98,9 @@ class TIRPCompletion:
                 X, y = self.tirp_based_model.get_df_for_classification(prefix_index=i)
                 if cls_name == const.MOD_CLS_XGB_NAME:
                     cls = XGBCls()
-                    cls.fit(X=X, y=y)
+                elif cls_name == const.MOD_CLS_FCPM_NAME:
+                    cls = FCPMCls(db_entities_num=self.number_of_entities, params=params)
+                cls.fit(X=X, y=y)
             self.prob_model[cls_name][i] = cls
 
     def learn_occ_time_model(self, cls_name: str):
