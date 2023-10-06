@@ -187,15 +187,14 @@ class FCPMCls:
         cdf_max = max(cdf.index.values)
         cdf_min = min(cdf.index.values)
 
-        if duration < cdf_min or duration > cdf_max:  # in case the duration is outside of the distribution
-            prob_to_return = self._uncertainty_prob
-            if duration - cdf_min < self._epsilon:  # if it close, estimate the closest duration
-                prob_to_return = self._calc_dist_prob(cdf, duration + self._epsilon)
-            elif cdf_max - duration < self._epsilon:
-                prob_to_return = self._calc_dist_prob(cdf, duration - self._epsilon)
-            else:
-                print("Check it out! the duration is outside of the distribution")
-            return prob_to_return
+        # in case the duration is outside of the distribution
+        if duration < cdf_min and cdf_min - duration < self._epsilon:
+            return self._calc_dist_prob(cdf, duration + self._epsilon)
+        elif duration > cdf_max and duration - cdf_max < self._epsilon:
+            return self._calc_dist_prob(cdf, duration - self._epsilon)
+        elif duration < cdf_min or duration > cdf_max:  # in case the duration is outside of the distribution
+            # print("Check it out! the duration is outside of the distribution")
+            return self._uncertainty_prob
 
         top = min(cdf.index.values, key=lambda x: abs(x - (duration + self._epsilon)))
         closest_num_max = min(top, cdf_max)  # in case its after the distribution's maximum value

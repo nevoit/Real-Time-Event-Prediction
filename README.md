@@ -20,10 +20,8 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -84,30 +82,42 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+**The code is divided as follows** 
+* The main_cpu.py python file contains the necessary code for running the data creation for the HugoBot system and creating the different representations of the abstract data.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+* The main_gpu.py python file contains the necessary code for running the DNN models
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+* The run_models.py python file called by the main_gpu.py contains the code that is responsible for calling the relevant functions of creating the models
 
+* The **utils_folder** contains the necessary functions to read the datasets, visualize the plots and set the parameters.
 
+* The **classifiers folder** contains 11 python files, one for each deep neural network.
 
-<!-- ROADMAP -->
-## Roadmap
+* The **temporal_abstraction_f** Contains the code responsible for the transformation that converts the code to the HugoBot system and for the neural networks.
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+* **HugoBot system** - performs the process of temporal abstraction
 
 
+**The flow**
+1. Create an anaconda env and install the relevant packages as described below. **Note:** To convert the MTS format from MATLAB  to np: Run the main_cpu.py file with the following parameters - "transform_mts_to_ucr_format".
+
+2. **Create the data for the hugobot system on the CPU cluster:** Run the main_cpu.py  with the following parameters - "create_files_for_hugobot {archive_name} {per_entity}"  
+**Note** - The first run must be with per_entity= False
+
+3. **Create the data for the DNN:** Run the main_cpu.py file with the following parameters -  
+"create_files {archive_name} {after_TA} {TA_metod} {combination} {transformation_number = 1} {per_entity}"
+
+4. **Running the DNN**  **on the gpu cluster:** Run the main_gpu.py file with the following parameters - "run_all {archive_name} {after_TA} {TA_metod} {combination} {transformation_number} {per_entity}"
+
+5. **Evaluating the results:** Run cd-diagram_graphs.py file or graphs.py file.  
+Parameters for the graphs.py:  
+The main function is 'create_all_graphs'. The function receives the following params:
+
+	* graph_numbers – list of the graphs you want to create.
+
+	* create_csv (Boolean) – combining all the results of the DNN architectures.  **Note** – this param needs to be set to True only in the first run.
+
+	* type – {archive_name}
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -133,18 +143,6 @@ Don't forget to give the project a star! Thanks again!
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- ACKNOWLEDGMENTS -->
