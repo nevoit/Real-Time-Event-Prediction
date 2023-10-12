@@ -1,7 +1,7 @@
 # Real-Time Event Prediction
 <a name="readme-top"></a>
 
-This repository includes implementation of our study that proposes a novel method for real-time event prediction for heterogeneous multivariate temporal data (time series, instantaneous events, or time intervals).
+This repository includes implementation of our studies that propose novel methods for real-time event prediction for heterogeneous multivariate temporal data (In the animation below V1 or V2 - time series, V3 - instantaneous events, and V4 - time intervals).
 
 ![Real-Time Event Prediction](figures/hetro_event_pred.gif)
 
@@ -14,9 +14,9 @@ This repository includes implementation of our study that proposes a novel metho
     </li>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
+    </li>
+    <li>
+      <a href="#citations-and-papers">Citations & Papers</a>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -45,6 +45,19 @@ The completion of a TIRP can be inferred by calculating the probability of obser
 We also implemented an extension of the single TIRP completion model to be capable of estimating the TIRP's completion occurrence time, in addition to the completion probability.
 By continuously aggregating multiple completion models for TIRPs that end with an event of interest, we learn a continuous event prediction model that is capable of estimating the event's occurrence probability and time.
 A model that leverages multiple TIRPs is expected to generalize better than a model that uses a single TIRP.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Citations & Papers -->
+## Citations and Papers
+TIRP completion - PAKDD'2023 (Pacific-Asia Conference on Knowledge Discovery and Data Mining):
+
+`Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023, May). Continuously predicting the completion of a time intervals related pattern. In Pacific-Asia Conference on Knowledge Discovery and Data Mining (pp. 239-251). Cham: Springer Nature Switzerland. [Link](https://dl.acm.org/doi/abs/10.1007/978-3-031-33374-3_19)`
+
+TIRP completion - Knowledge and Information Systems - Journal version:
+
+`Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023). Continuous prediction of a time intervals-related pattern’s completion. Knowledge and Information Systems, 1-50. [Link](https://link.springer.com/article/10.1007/s10115-023-01910-w)`
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
