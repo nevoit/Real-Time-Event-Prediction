@@ -1,10 +1,15 @@
 # Real-Time Event Prediction
 <a name="readme-top"></a>
 
-This repository includes implementation of our studies that propose novel methods for real-time event prediction for heterogeneous multivariate temporal data (In the animation below V1 or V2 - time series, V3 - instantaneous events, and V4 - time intervals).
+This repository includes implementation of our studies that propose novel methods for 
+real-time event prediction for heterogeneous multivariate temporal data (time series, instantaneous events, and time intervals).
+
+
+In the animation below, V1 and V2 are time series, V3 represents instantaneous events, and V4 represents time intervals.
+The animation shows that the probability of experiencing an event of interest (heart attack here) increases over time (tc represent the current time), while the estimated time to event decreases.
 
 ![Real-Time Event Prediction](figures/hetro_event_pred.gif)
-
+![img.png](img.png)
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -21,7 +26,8 @@ This repository includes implementation of our studies that propose novel method
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#input-files">Input Files</a></li>
+        <li><a href="#config-file">Config File</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -50,11 +56,11 @@ A model that leverages multiple TIRPs is expected to generalize better than a mo
 
 <!-- Citations & Papers -->
 ## Citations and Papers
-TIRP completion - PAKDD'2023 (Pacific-Asia Conference on Knowledge Discovery and Data Mining) [[Link](https://dl.acm.org/doi/abs/10.1007/978-3-031-33374-3_19)]:
+Prediction of TIRP completion - PAKDD'2023 (Pacific-Asia Conference on Knowledge Discovery and Data Mining) [[Link](https://dl.acm.org/doi/abs/10.1007/978-3-031-33374-3_19)]:
 
 `Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023, May). Continuously predicting the completion of a time intervals related pattern. In Pacific-Asia Conference on Knowledge Discovery and Data Mining (pp. 239-251). Cham: Springer Nature Switzerland.`
 
-TIRP completion - Knowledge and Information Systems - Journal version [[Link](https://link.springer.com/article/10.1007/s10115-023-01910-w)]:
+Prediction of TIRP completion - Knowledge and Information Systems - Journal version [[Link](https://link.springer.com/article/10.1007/s10115-023-01910-w)]:
 
 `Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023). Continuous prediction of a time intervals-related pattern’s completion. Knowledge and Information Systems, 1-50.`
 
@@ -64,34 +70,27 @@ TIRP completion - Knowledge and Information Systems - Journal version [[Link](ht
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+### Input Files
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+TBD
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Config File
+
+TBD
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+The `requirements.txt` file lists all Python libraries that the project depend on,
+and they will be installed using:
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+ ```sh
+ pip install -r requirements.txt
+ ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
