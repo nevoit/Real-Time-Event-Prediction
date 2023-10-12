@@ -50,13 +50,13 @@ A model that leverages multiple TIRPs is expected to generalize better than a mo
 
 <!-- Citations & Papers -->
 ## Citations and Papers
-TIRP completion - PAKDD'2023 (Pacific-Asia Conference on Knowledge Discovery and Data Mining):
+TIRP completion - PAKDD'2023 (Pacific-Asia Conference on Knowledge Discovery and Data Mining) [[Link](https://dl.acm.org/doi/abs/10.1007/978-3-031-33374-3_19)]:
 
-`Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023, May). Continuously predicting the completion of a time intervals related pattern. In Pacific-Asia Conference on Knowledge Discovery and Data Mining (pp. 239-251). Cham: Springer Nature Switzerland. [Link](https://dl.acm.org/doi/abs/10.1007/978-3-031-33374-3_19)`
+`Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023, May). Continuously predicting the completion of a time intervals related pattern. In Pacific-Asia Conference on Knowledge Discovery and Data Mining (pp. 239-251). Cham: Springer Nature Switzerland.`
 
-TIRP completion - Knowledge and Information Systems - Journal version:
+TIRP completion - Knowledge and Information Systems - Journal version [[Link](https://link.springer.com/article/10.1007/s10115-023-01910-w)]:
 
-`Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023). Continuous prediction of a time intervals-related pattern’s completion. Knowledge and Information Systems, 1-50. [Link](https://link.springer.com/article/10.1007/s10115-023-01910-w)`
+`Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023). Continuous prediction of a time intervals-related pattern’s completion. Knowledge and Information Systems, 1-50.`
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
