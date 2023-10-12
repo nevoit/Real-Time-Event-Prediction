@@ -189,9 +189,9 @@ class FCPMCls:
 
         # in case the duration is outside of the distribution
         if duration < cdf_min and cdf_min - duration < self._epsilon:
-            return self._calc_dist_prob(cdf, duration + self._epsilon)
+            return self._calc_dist_prob(cdf=cdf, duration=cdf_min)
         elif duration > cdf_max and duration - cdf_max < self._epsilon:
-            return self._calc_dist_prob(cdf, duration - self._epsilon)
+            return self._calc_dist_prob(cdf=cdf, duration=cdf_max)
         elif duration < cdf_min or duration > cdf_max:  # in case the duration is outside of the distribution
             # print("Check it out! the duration is outside of the distribution")
             return self._uncertainty_prob
@@ -206,7 +206,7 @@ class FCPMCls:
 
         # in case of scenarios that durations are the same
         if not isinstance(prob, (np.floating, float)):
-            print("Check it out! the durations are the same!")
+            print("Check it out! all the durations are the same!")
             return 1
 
         return prob

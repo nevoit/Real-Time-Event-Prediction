@@ -34,7 +34,7 @@ def run_exp():
 
     # This block iterates over the TIRPs and for each pattern learns a completion model (probability and time to event)
     tirp_comp_models: list = []
-    for tirp in tirps_list[:20]:
+    for tirp in tirps_list:
         tirp_comp = TIRPCompletion(tirp=tirp, sti_train_set=train_set)
         tirp_comp.learn_occ_prob_model(cls_name=const.MOD_CLS_SCPM_NAME)
         tirp_comp.learn_occ_prob_model(cls_name=const.MOD_CLS_FCPM_NAME, params=const.MOD_CLS_FCPM_PARAMS)
@@ -57,7 +57,7 @@ def run_exp():
     eval_model = Evaluate(actual_labels=test_set_labels,
                           actual_event_time=test_set_times,
                           pred_over_time=pred_over_time)
-    auc_roc, auc_prc = eval_model.evaluate_per_w_tau(eval_model=eval_model, tau=0, w=5)
+    auc_roc, auc_prc = eval_model.evaluate_per_w_tau(eval_model=eval_model, tau=2, w=20)
     print(f'AUC-ROC: {auc_roc}, AUPRC: {auc_prc}')
 
 
