@@ -6,7 +6,7 @@ real-time event prediction for heterogeneous multivariate temporal data (time se
 
 
 In the animation below, V1 and V2 are time series, V3 represents instantaneous events, and V4 represents time intervals.
-The animation shows that the probability of experiencing an event of interest (heart attack here) increases over time (tc represent the current time), while the estimated time to event decreases.
+The animation shows that the probability of experiencing an event of interest (heart attack here) increases over time (tc represents the current time), while the estimated time to event decreases.
 
 ![Real-Time Event Prediction](figures/hetro_event_pred.gif)
 ![img.png](img.png)
@@ -165,19 +165,23 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+I would like to thank Tali Malenboim, Lior Tkach, and Shani Bahat for their help in debugging this repository,
+asking questions, and providing comments. 
+These students plan to continue my PhD work, 
+and they have done a great job of understanding all the complex aspects of this research in order to implement
+their own ideas in the future. 
+I wish you all the best with your research, and I hope this repository will help you achieve your academic goals.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- DEDICATION -->
+## Dedication
+In memory of Lior Tkach (M.Sc. student in Prof. Robert Moskovitch's lab: https://www.ise.bgu.ac.il/cdalab/),
+who was tragically killed in a terror attack on October 7th, 2023.
+
+Lior's passion for knowledge and dedication to his work were evident in his constructive comments and
+pivotal role in debugging the code for this repository. 
+His memory lives on in our hearts and in the work we continue to do.
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
