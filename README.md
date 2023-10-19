@@ -9,7 +9,8 @@ In the animation below, V1 and V2 are time series, V3 represents instantaneous e
 The animation shows that the probability of experiencing an event of interest (heart attack here) increases over time (tc represents the current time), while the estimated time to event decreases.
 
 ![Real-Time Event Prediction](figures/hetro_event_pred.gif)
-![img.png](img.png)
+
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -35,6 +36,7 @@ The animation shows that the probability of experiencing an event of interest (h
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
+	<li><a href="#Dedication">Dedication</a></li>
   </ol>
 </details>
 
@@ -166,10 +168,12 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Acknowledgments
 
 I would like to thank Tali Malenboim, Lior Tkach, and Shani Bahat for their help in debugging this repository,
-asking questions, and providing comments. 
+asking questions, and providing comments.
+
 These students plan to continue my PhD work, 
 and they have done a great job of understanding all the complex aspects of this research in order to implement
 their own ideas in the future. 
+
 I wish you all the best with your research, and I hope this repository will help you achieve your academic goals.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -183,6 +187,7 @@ Lior's passion for knowledge and dedication to his work were evident in his cons
 pivotal role in debugging the code for this repository. 
 His memory lives on in our hearts and in the work we continue to do.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
