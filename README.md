@@ -241,7 +241,7 @@ and they will be installed using:
   * `main.py`: This Python file contains the main code for running the model learning process.
   * `core_comp`: This folder contains all the files for the core classes of time intervals components.
   * `tirp_prefixes`: This folder contains all the files for the TIRP-Prefix definitions and detection.
-  * `prediction`: This folder contains all the files for the prediction classes of TIRP's completion.
+  * `prediction`: This folder contains all the files for the prediction classes of TIRP's completion (e.g., SCPM, FCPM, and XGBoost-based models).
 
 **The flow**
 
