@@ -267,11 +267,11 @@ For each pattern, it does the following:
 4. **Prediction Loop**: After building the models for all patterns end with the event of interest, 
 the code enters another loop that iterates over entities in the test set. 
 For each entity, it does the following:
-* Predicts the probability and time to event using specific models.
-* Aggregates the predicted probability and time.
-* Stores the aggregated prediction.
+   * Predicts the probability and time to event using specific models.
+   * Aggregates the predicted probability and time.
+   * Stores the aggregated prediction.
 
-6. **Model Evaluation**: After making predictions for all test entities, 
+5. **Model Evaluation**: After making predictions for all test entities, 
 the code evaluates the learned models. 
 It calculates metrics like AUC-ROC and AUPRC using specific evaluation parameters (tau and w). 
 Then, the code prints the metrics to the console.
