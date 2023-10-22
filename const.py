@@ -1,5 +1,7 @@
 # The data should contain events with symbol and variable id with the same value
 EVENT_INDEX = 999
+TAU_EXP = [2, 3, 10]
+W_EXP = [10, 20, 30]
 
 # Input folders and files names
 INPUT_FOLDER = 'input'

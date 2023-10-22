@@ -28,7 +28,7 @@ The animation shows that the probability of experiencing an event of interest (h
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#input-files">Input Files</a></li>
-        <li><a href="#config-file">Config File</a></li>
+        <li><a href="#config-file">Configuration</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -200,18 +200,23 @@ with the following temporal relations:
     ```
  	
     and many more...
-    
-	
-	
 
 #### Raw Data
 TBD
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Config File
+### Configuration
 
-TBD
+The `cont.py` file contains configuration that can be changed for the experiments.
+
+* `EVENT_INDEX` - Represent the index of the event. The data should contain events with symbol and variable id with the same value.
+The default is 999.
+* `TAU_EXP` - an array of `tau` values (time delays) that used for the model prediction.
+* `W_EXP` - an array of `w` values (window sizes) that used for the model prediction.
+* Input folders and files names - define the input folder and the input files as describe above.
+* Model parameters - Dictionaries with all relevant parameters can be defined and provided for the experiments.
+Some models using these dictionaries for hyperparameters to find the best parameters for the model. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -232,41 +237,44 @@ and they will be installed using:
 ## Usage
 
 **The code is divided as follows** 
-* The main_cpu.py python file contains the necessary code for running the data creation for the HugoBot system and creating the different representations of the abstract data.
 
-* The main_gpu.py python file contains the necessary code for running the DNN models
-
-* The run_models.py python file called by the main_gpu.py contains the code that is responsible for calling the relevant functions of creating the models
-
-* The **utils_folder** contains the necessary functions to read the datasets, visualize the plots and set the parameters.
-
-* The **classifiers folder** contains 11 python files, one for each deep neural network.
-
-* The **temporal_abstraction_f** Contains the code responsible for the transformation that converts the code to the HugoBot system and for the neural networks.
-
-* **HugoBot system** - performs the process of temporal abstraction
-
+  * `main.py`: This Python file contains the main code for running the model learning process.
+  * `core_comp`: This folder contains all the files for the core classes of time intervals components.
+  * `tirp_prefixes`: This folder contains all the files for the TIRP-Prefix definitions and detection.
+  * `prediction`: This folder contains all the files for the prediction classes of TIRP's completion.
 
 **The flow**
-1. Create an anaconda env and install the relevant packages as described below. **Note:** To convert the MTS format from MATLAB  to np: Run the main_cpu.py file with the following parameters - "transform_mts_to_ucr_format".
 
-2. **Create the data for the hugobot system on the CPU cluster:** Run the main_cpu.py  with the following parameters - "create_files_for_hugobot {archive_name} {per_entity}"  
-**Note** - The first run must be with per_entity= False
+The given code processes and evaluates predictive models for events of interest using time interval data.
 
-3. **Create the data for the DNN:** Run the main_cpu.py file with the following parameters -  
-"create_files {archive_name} {after_TA} {TA_metod} {combination} {transformation_number = 1} {per_entity}"
+Let's break down the flow of the code step by step:
 
-4. **Running the DNN**  **on the gpu cluster:** Run the main_gpu.py file with the following parameters - "run_all {archive_name} {after_TA} {TA_metod} {combination} {transformation_number} {per_entity}"
+1. **Load Data**: The code starts by defining various file paths. These paths point to different CSV files that contain data. It includes paths for STI data, raw data, and pattern data.
+The code also loads the training and test sets. 
+It also extracts labels for the test set and the time of the event of interest from the test set.
+This is used for model evaluation.
 
-5. **Evaluating the results:** Run cd-diagram_graphs.py file or graphs.py file.  
-Parameters for the graphs.py:  
-The main function is 'create_all_graphs'. The function receives the following params:
+2. **Pattern Data**: It loads patterns data.
+This patterns data will be used to build models.
 
-	* graph_numbers – list of the graphs you want to create.
+3. **Model Building Loop**: The code then enters a loop that iterates over patterns that end with the event of interest.
+For each pattern, it does the following:
+   * Learns probability models for the pattern. 
+   It learns different probability models for the given pattern using different methods or parameters.
+   * Learns a time model for the pattern.
+   * Performs post-training cleanup.
+   
+4. **Prediction Loop**: After building the models for all patterns end with the event of interest, 
+the code enters another loop that iterates over entities in the test set. 
+For each entity, it does the following:
+* Predicts the probability and time to event using specific models.
+* Aggregates the predicted probability and time.
+* Stores the aggregated prediction.
 
-	* create_csv (Boolean) – combining all the results of the DNN architectures.  **Note** – this param needs to be set to True only in the first run.
-
-	* type – {archive_name}
+6. **Model Evaluation**: After making predictions for all test entities, 
+the code evaluates the learned models. 
+It calculates metrics like AUC-ROC and AUPRC using specific evaluation parameters (tau and w). 
+Then, the code prints the metrics to the console.
 
 <!-- CONTRIBUTING -->
 ## Contributing

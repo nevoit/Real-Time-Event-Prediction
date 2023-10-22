@@ -57,8 +57,11 @@ def run_exp():
     eval_model = Evaluate(actual_labels=test_set_labels,
                           actual_event_time=test_set_times,
                           pred_over_time=pred_over_time)
-    auc_roc, auc_prc = eval_model.evaluate_per_w_tau(eval_model=eval_model, tau=2, w=20)
-    print(f'AUC-ROC: {auc_roc}, AUPRC: {auc_prc}')
+
+    for tau in const.TAU_EXP:
+        for w in const.W_EXP:
+            auc_roc, auc_prc = eval_model.evaluate_per_w_tau(eval_model=eval_model, tau=2, w=20)
+            print(f'AUC-ROC: {auc_roc}, AUPRC: {auc_prc}')
 
 
 if __name__ == '__main__':
