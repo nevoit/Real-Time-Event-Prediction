@@ -66,6 +66,7 @@ Prediction of TIRP completion - Knowledge and Information Systems - Journal vers
 
 `Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023). Continuous prediction of a time intervals-related pattern’s completion. Knowledge and Information Systems, 1-50.`
 
+**To find more relevant papers on this topic or similar topics, please visit my [Google Scholar profile](https://scholar.google.com/citations?user=mxSMEeoAAAAJ&hl=en&oi=ao).**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -75,6 +76,135 @@ Prediction of TIRP completion - Knowledge and Information Systems - Journal vers
 
 ### Input Files
 
+#### STI Data
+
+Our proposed methods require STI data. 
+If you have heterogeneous multivariate temporal data (time series and events), 
+you must transform it into STI format before using this repository.
+You must also provide time-intervals related patterns (TIRPs) as input.
+
+Note: This repository does not include temporal abstraction methods or time-intervals mining algorithms 
+because these are not part of our work' contributions.
+However, there are many other repositories that provide these methods,
+so you should use them before running this code.
+
+The following files are required as input:
+
+1. _Training set_ (see for example `input/STI data/sti_train.csv`) - 
+A set that is used to learn the models. 
+The format should be as following: 
+    ```csv
+    SeriesID,VarID,SymbolID,StartTime,EndTime
+    1.0,1.0,3.0,2.0,49.0
+    1.0,1.0,2.0,50.0,67.0
+    1.0,2.0,4.0,9.0,10.0
+    ...
+    1512.0,9.0,27.0,2.0,25.0
+    1512.0,10.0,28.0,2.0,25.0
+    1512.0,11.0,33.0,2.0,25.0
+    1512.0,999.0,999.0,26.0,27.0
+    ```
+    Where the columns are:
+   * `SeriesID` - _float_; the entity ID (for example, patient ID)
+   * `VarID` - _float_; the variable ID (for example, blood pressure)
+   * `SymbolID` - _float_; the symbol ID (for example, high blood pressure). 
+   Mote: the symbol ID must be unique even if the VarId is different. 
+   The event of interest's index is defined in the `const` file as explain later.
+We defined the event of interest's index to be 999.0 and in the last row of the CSV it
+can be seen that the event of interest was occurred (`1512.0,999.0,999.0,26.0,27.0`).
+   * `StartTime` - _float_; the symbol's start time
+   * `EndTime` - _float_; the symbol's end time
+   
+    It's very important to make sure that in entities that the event of interest has occurred,
+the event of interest will have the latest start time and the latest end time of other STIs will be earlier to
+the event of interest's start time.
+This means only temporal relations of meets or before are supported with the event of interest.  
+
+
+2. _Testing set_ (see for example `input/STI data/sti_test.csv`) -
+Same format as the training set descriptions but used of evaluation of the methods instead of learning the methods.
+
+
+3. Patterns (see for example `input/STI data/patterns.csv`) -
+Provided TIRPs that are relevant for the model learning.
+For the provided TIRPs, only those that ends with the event of interest are used.
+Note: the index of the event of interest needs to be defined in the `const` file.
+The format should be as following: 
+    ```
+    STIs,TempRels,VerSupp,HorSupp
+    "[1, 10, 6]","['c', 'c', 'b']",0.06097560975609756,7.8
+    "[1, 10, 6, 1]","['c', 'c', 'b', 'b', 'b', 'b']",0.06097560975609756,7.8
+    ...
+    "[1, 5, 999]","['c', 'b', 'b']",0.17682926829268292,2.413793103448276
+    "[1, 5, 15, 999]","['c', 'c', 'b', 'b', 'b', 'b']",0.054878048780487805,6.888888888888889
+    ```
+	Where the columns are:
+   * `STIs` - _str_; represents an array of STIs
+   * `TempRels` - _str_; represents an array of Allen's seven temporal relations 
+   (with the following chars: `BEFORE = 'b'`, `MEETS = 'm'`, `CONTAINS = 'c'`, `EQUALS = 'e'`,
+   `FINISHED_BY = 'f'`, `OVERLAPS = 'o'`, `STARTS = 's'`) 
+   * `VerSupp` - _float_; _currently not used_; represents the vertical support of a TIRP, 
+   which means the percentage of entities found to have at least one instance of the TIRP).
+   * `HorSupp` - _float_; _currently not used_; represents the mean horizontal support of a TIRP, 
+   which represents the averaged number of a TIRP's instances that were discovered in an entity
+	
+    We defined the event of interest's index to be 999.0.
+    Thus, the first two rows will be ignored as they represent TIRPs that not end with the event of interest.
+    In contrast, the last rows will be used as they TIRPs that end with the event of interest.
+
+    For example, the last row (`"[1, 5, 15, 999]","['c', 'c', 'b', 'b', 'b', 'b']"`) represents a TIRP with the STIs "1", "5", "15", and "999"
+with the following temporal relations:
+
+    ```
+           5      15      999             
+     1    'c'     'c'     'b'  
+     5            'b'     'b'
+     15                   'b'
+ 
+    ```
+   
+    while the indices of the temporal relations in the array `['c', 'c', 'b', 'b', 'b', 'b']` are located in this order:
+	```
+           5      15     999             
+     1     0      1       3  
+     5            2       4
+     15                   5
+ 
+    ```
+
+    Examples of TIRP instances could be:
+
+    ```
+    ----------------1-------------------
+             -------------5---------
+                 -------15------
+                                                       -999-
+    ```
+ 
+    OR:
+
+    ```
+    ----------------1-------------------
+             -------5-----
+                  -15-
+                                             -999-
+    ```
+ 
+    OR:
+   
+    ```
+    ----------------1-------------------
+      --------------5-----------------
+        -------------15--------------
+                                                                           -999-
+    ```
+ 	
+    and many more...
+    
+	
+	
+
+#### Raw Data
 TBD
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -141,17 +271,14 @@ The main function is 'create_all_graphs'. The function receives the following pa
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+If you have a suggestion that would make this better, please fork the repo and create a pull request.
+You can also simply open an issue with the tag "enhancement".
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Don't forget to give the project a star! 
 
+Thanks again!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
