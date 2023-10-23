@@ -428,7 +428,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-I would like to thank Tali Malenboim, Lior Tkach, and Shani Bahat for their help in debugging this repository,
+I would like to thank [Tali Malenboim](https://www.linkedin.com/in/tali-malenboim-a2533a260/), 
+[Lior Tkach](https://www.linkedin.com/in/lior-tkach/), and Shani Bahat for their help in debugging this repository,
 asking questions, and providing comments.
 
 These students plan to continue my PhD work, 
@@ -441,8 +442,8 @@ I wish you all the best with your research, and I hope this repository will help
 
 <!-- DEDICATION -->
 ## Dedication
-In memory of Lior Tkach (M.Sc. student in Prof. Robert Moskovitch's lab: https://www.ise.bgu.ac.il/cdalab/),
-who was tragically killed in a terror attack on October 7th, 2023.
+In memory of [Lior Tkach](https://www.linkedin.com/in/lior-tkach/) (M.Sc. student in [Prof. Robert Moskovitch's lab](https://www.ise.bgu.ac.il/cdalab/)),
+who was tragically killed in [a terror attack on October 7th, 2023](https://en.wikipedia.org/wiki/2023_Hamas_attack_on_Israel).
 
 Lior's passion for knowledge and dedication to his work were evident in his constructive comments and
 pivotal role in debugging the code for this repository. 
