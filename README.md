@@ -1,15 +1,17 @@
 # Real-Time Event Prediction
 <a name="readme-top"></a>
 
-This repository includes implementation of our studies that propose novel methods for 
-real-time event prediction for heterogeneous multivariate temporal data (time series, instantaneous events, and time intervals).
+This repository includes implementation of my research that propose novel methods for 
+real-time event prediction for heterogeneous multivariate temporal data 
+(time series, instantaneous events, and time intervals).
 
 
-In the animation below, V1 and V2 are time series, V3 represents instantaneous events, and V4 represents time intervals.
-The animation shows that the probability of experiencing an event of interest (heart attack here) increases over time (tc represents the current time), while the estimated time to event decreases.
+In the animation below, V1 and V2 are time series, V3 represents instantaneous events,
+and V4 represents time intervals.
 
 ![Real-Time Event Prediction](figures/hetro_event_pred.gif)
-
+_Figure 1: The animation shows that the probability of experiencing an event of interest (heart attack in this example)
+increases over time (tc represents the current time), while the estimated time to event decreases._
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -19,10 +21,10 @@ The animation shows that the probability of experiencing an event of interest (h
       <a href="#background">Background</a>
     </li>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#citations-and-papers">Citations & Papers</a>
     </li>
     <li>
-      <a href="#citations-and-papers">Citations & Papers</a>
+      <a href="#about-the-research">About The Research</a>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -46,14 +48,6 @@ Symbolic time intervals (STIs) are a powerful way to represent time-series data 
 Temporal abstraction can be used to uniformly represent such heterogeneous multivariate temporal data using STIs. 
 Frequent time intervals-related patterns (TIRPs) can be discovered from the STI data, which have proven to be valuable for knowledge discovery, as well as for use as features in classification and prediction tasks.
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
-Our method builds on our previous work on the continuous prediction of a single TIRP completion.
-The completion of a TIRP can be inferred by calculating the probability of observing the remaining part of the pattern, given its observed part at a specific time.
-We also implemented an extension of the single TIRP completion model to be capable of estimating the TIRP's completion occurrence time, in addition to the completion probability.
-By continuously aggregating multiple completion models for TIRPs that end with an event of interest, we learn a continuous event prediction model that is capable of estimating the event's occurrence probability and time.
-A model that leverages multiple TIRPs is expected to generalize better than a model that uses a single TIRP.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Citations & Papers -->
@@ -69,6 +63,74 @@ Prediction of TIRP completion - Knowledge and Information Systems - Journal vers
 **To find more relevant papers on this topic or similar topics, please visit my [Google Scholar profile](https://scholar.google.com/citations?user=mxSMEeoAAAAJ&hl=en&oi=ao).**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ABOUT THE RESEARCH -->
+## About The Research
+Our methods build on the idea of real-time prediction of a single TIRP completion.
+The completion of a TIRP can be inferred by calculating the probability of observing the remaining part of the pattern,
+given its observed part at a specific time.
+We also implemented an extension of the single TIRP completion model to be capable of estimating the TIRP's completion
+occurrence time, in addition to the completion probability.
+
+In the figure below, we observe a TIRP `Q` defined as 
+`A overlaps B`, `A before y`, `B before y`,
+alongside four distinct time points denoted as `tc^1, tc^2, tc^3, tc^4`,
+which have been selected to dissect the instance of the partial pattern.
+
+Consider `p_{t_c}` as the observed part of the instance of `Q` at time point `tc`,
+and correspondingly, `s_{t_c}` as the yet-to-occur portion of the instance of `Q` at `tc`.
+We are thus interested in estimating `Pr(Q | p_{t_c})`, which represents the $Q$'s completion probability,
+given an observed prefix `p_{t_c}` at time `t_c`.
+
+The simple computation to compute this probability is `Pr(Q)/Pr(p_{t_c})`, which addresses the query:
+"Among all instances where we observed `p_{t_c}`, how frequently was it succeeded by `s_{t_c}`?"
+The computation of the numerator `Pr(Q)` is a relatively straightforward process,
+involving the counting of `Q` instances.
+Still, determining the denominator `Pr(p_{t_c})` poses more intricate challenges in certain scenarios.
+
+Challenges arise, such as at time point `tc^2`,
+where STIs remain unfinished, rendering the description of `p_{t_c}` and `s_{t_c}`
+using Allen's temporal relations unfeasible.
+
+Find more information about the challenges and the solutions in our papers.
+
+![TIRP](figures/TIRP.png)
+_Figure 2: The objective is to determine, at various time points (e.g., `tc^1, tc^2, tc^3, tc^4`),
+the probability and time of TIRP `Q`'s eventual completion._
+
+By continuously aggregating multiple predictors for the completion of TIRPs that end with an event of interest, 
+we learn a real-time event prediction model that is capable of estimating the event's occurrence probability and time.
+A model that leverages multiple TIRPs is expected to generalize better than a model that uses a single TIRP.
+
+For example, the figure below presents TIRPs describing an entity with three symbols `A`, `B`, and `C` 
+until `tc` to several attributes of multiple detected TIRP instances.
+In retrospect, it is known that this entity had an event of interest `y` in its data.
+The continuous event prediction model consists three models `m1`, `m2`, `m3` that estimates at 
+`tc` the `y`'s occurrence probability, by continuously aggregating the `Q1`, `Q2`, and `Q3` completion probabilities 
+and estimated times for the TIRP instances 
+`p_{t_c}^{1.1}`, `p_{t_c}^{1.2}`, `p_{t_c}^{2.1}`,`p_{t_c}^{2.2}`,`p_{t_c}^{3.1}`, detected until `tc`.
+
+![Detected Prefix Instances](figures/multiple_predictors.png)
+_Figure 3: An example of detected prefix instances of three TIRPs `Q1`, `Q2`, and `Q3` that end with the event of interest._ 
+
+As shown with instances `p_{t_c}^{1.1}` and `p_{t_c}^{1.2}` (colored in blue),
+the instances of a TIRP can be detected multiple times in the same entity before the event of interest occurs.
+Additionally, `p_{t_c}^{2.1}` and `p_{t_c}^{2.2}` are prefixes of TIRP `Q2` (colored in yellow) 
+and have a different number of _tieps_, in which the earlier instance (`p_{t_c}^{2.1}`) 
+is more advanced than the later one (`p_{t_c}^{2.2}`).
+
+Applying the mean function at `tc` resulted in: 
+`mean { 0.75, 0.66, 0.87, 0.37, 0.52} = 0.634`.
+Thus, at `tc=105` time units, the estimated probability of observing `y` is `63.4%`.
+
+Similarly, the event of interest occurrence time is computed by continuously aggregating all the predictors'
+estimated TIRP completion times at `tc`.
+Applying the mean function at `tc` resulted in: 
+`mean {108, 112, 121, 110, 109} = 112` time units, 
+which is close to the actual occurrence time at time point 110.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
