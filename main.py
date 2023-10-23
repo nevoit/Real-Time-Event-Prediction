@@ -60,7 +60,7 @@ def run_exp():
 
     for tau in const.TAU_EXP:
         for w in const.W_EXP:
-            auc_roc, auc_prc = eval_model.evaluate_per_w_tau(eval_model=eval_model, tau=2, w=20)
+            auc_roc, auc_prc = eval_model.evaluate_per_w_tau(eval_model=eval_model, tau=tau, w=w)
             print(f'AUC-ROC: {auc_roc}, AUPRC: {auc_prc}')
 
 
