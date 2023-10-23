@@ -277,6 +277,59 @@ with the following temporal relations:
 #### Raw Data
 The raw data are used to compare our methods with baseline models.
 
+The following files are required as input:
+
+1. _Training set_ (see for example `input/Raw data/raw_train.csv`) - 
+A set that is used to learn the baseline models. 
+
+   The format should be as following: 
+    ```csv
+    SeriesID,VarID,TimeStamp,VarVal
+   1.0,1.0,6.0,0.15908584402322806
+   1.0,1.0,7.0,0.15908584402322806
+   1.0,1.0,8.0,0.15908584402322806
+    ...
+   1730.0,12.0,6.0,-0.9177692310061688
+   1730.0,12.0,9.0,-0.9177692310061688
+   1730.0,12.0,15.0,-0.9177692310061688
+    ```
+    Where the columns are:
+   * `SeriesID` - _float_; the entity ID (for example, patient ID)
+   * `VarID` - _float_; the variable ID (for example, blood pressure)
+   * `TimeStamp` - _float_; timestamp
+   * `VarVal` - _float_; the variable value at the timestamp
+
+
+2. _Training classes_ (see for example `input/Raw data/train_class.csv`) - 
+The classes that are used to learn the baseline models. 
+
+   The format should be as following: 
+    ```csv
+    SeriesID,Class
+   1578.0,1
+   1557.0,1
+   1607.0,1
+    ...
+   1407.0,0
+   1291.0,0
+   66.0,0
+    ```
+    Where the columns are:
+   * `SeriesID` - _float_; the entity ID (for example, patient ID)
+   * `Class` - _int_; whether the event of interest was occurred or not. 
+   Note: For entities with an event of interest, 
+   the data should be provided in a way that shows the event occurred one timestamp after 
+   the entity's data ends. In other words, provide the data until the event of interest.
+
+
+3. _Testing set_ (see for example `input/Raw data/raw_test.csv`) - 
+Same as the training set but used to evaluate the baseline models.
+
+
+4. _Testing classes_ (see for example `input/Raw data/test_class.csv`) - 
+Same as the training classes but used to learn the baseline models. 
+   
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Configuration
