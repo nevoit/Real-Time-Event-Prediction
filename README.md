@@ -31,7 +31,7 @@ increases over time (tc represents the current time), while the estimated time t
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#input-files">Input Files</a></li>
-        <li><a href="#config-file">Configuration</a></li>
+        <li><a href="#configuration">Configuration</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -401,6 +401,8 @@ For each entity, it does the following:
 the code evaluates the learned models. 
 It calculates metrics like AUC-ROC and AUPRC using specific evaluation parameters (tau and w). 
 Then, the code prints the metrics to the console.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 ## Contributing
