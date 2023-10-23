@@ -10,6 +10,7 @@ In the animation below, V1 and V2 are time series, V3 represents instantaneous e
 and V4 represents time intervals.
 
 ![Real-Time Event Prediction](figures/hetro_event_pred.gif)
+
 _Figure 1: The animation shows that the probability of experiencing an event of interest (heart attack in this example)
 increases over time (tc represents the current time), while the estimated time to event decreases._
 
@@ -96,6 +97,7 @@ Find more information about the challenges and the solutions, as well as more co
 in our papers.
 
 ![TIRP](figures/TIRP.png)
+
 _Figure 2: The objective is to determine, at various time points (e.g., `tc^1, tc^2, tc^3, tc^4`),
 the probability and time of TIRP `Q`'s eventual completion._
 
@@ -112,6 +114,7 @@ and estimated times for the TIRP instances
 `p_{t_c}^{1.1}`, `p_{t_c}^{1.2}`, `p_{t_c}^{2.1}`,`p_{t_c}^{2.2}`,`p_{t_c}^{3.1}`, detected until `tc`.
 
 ![Detected Prefix Instances](figures/multiple_predictors.png)
+
 _Figure 3: An example of detected prefix instances of three TIRPs `Q1`, `Q2`, and `Q3` that end with the event of interest._ 
 
 As shown with instances `p_{t_c}^{1.1}` and `p_{t_c}^{1.2}` (colored in blue),
