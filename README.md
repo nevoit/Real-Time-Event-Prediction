@@ -271,7 +271,7 @@ with the following temporal relations:
     and many more...
 
 #### Raw Data
-TBD
+The raw data are used to compare our methods with baseline models.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
