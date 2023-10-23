@@ -137,8 +137,8 @@ Applying the simple mean function at `tc` resulted in:
 `mean {108, 112, 121, 110, 109} = 112` time units, 
 which is close to the actual occurrence time at time point 110.
 
-Find more information about more complex continuous aggregation functions and TIRP selection methods,
-in our papers.
+**Find more information about more complex continuous aggregation functions and TIRP selection methods,
+in our papers.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -199,7 +199,7 @@ Same format as the training set descriptions but used of evaluation of the metho
 
 
 3. Patterns (see for example `input/STI data/patterns.csv`) -
-Provided TIRPs that are relevant for the model learning.
+Provided TIRPs that are relevant for the model learning (pattern selection methods can be applied on this file).
 For the provided TIRPs, only those that ends with the event of interest are used.
 Note: the index of the event of interest needs to be defined in the `const` file.
 The format should be as following: 
