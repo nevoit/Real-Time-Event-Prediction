@@ -68,7 +68,7 @@ Prediction of TIRP completion - Knowledge and Information Systems - Journal vers
 <!-- ABOUT THE RESEARCH -->
 ## About The Research
 
-### Real-Time TIRP Completion Prediction
+### TIRP Completion Prediction
 Our methods build on the idea of real-time prediction of a single TIRP completion.
 The completion of a TIRP can be inferred by calculating the probability of observing the remaining part of the pattern,
 given its observed part at a specific time.
@@ -104,7 +104,7 @@ occurrence time, in addition to the completion probability.
 **Find more information about the challenges and the solutions, as well as more complex models for TIRP's completion 
 (e.g., FCPM, or XGBoost-based models) in our papers.**
 
-### Real-Time Event Prediction
+### Event Prediction
 By continuously aggregating multiple predictors for the completion of TIRPs that end with an event of interest, 
 we learn a real-time event prediction model that is capable of estimating the event's occurrence probability and time.
 A model that leverages multiple TIRPs is expected to generalize better than a model that uses a single TIRP.
