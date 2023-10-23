@@ -82,7 +82,7 @@ and correspondingly, `s_{t_c}` as the yet-to-occur portion of the instance of `Q
 We are thus interested in estimating `Pr(Q | p_{t_c})`, which represents the $Q$'s completion probability,
 given an observed prefix `p_{t_c}` at time `t_c`.
 
-The simple computation to compute this probability is `Pr(Q)/Pr(p_{t_c})`, which addresses the query:
+The simple computation (using SCPM) to compute this probability is `Pr(Q)/Pr(p_{t_c})`, which addresses the query:
 "Among all instances where we observed `p_{t_c}`, how frequently was it succeeded by `s_{t_c}`?"
 The computation of the numerator `Pr(Q)` is a relatively straightforward process,
 involving the counting of `Q` instances.
@@ -92,7 +92,8 @@ Challenges arise, such as at time point `tc^2`,
 where STIs remain unfinished, rendering the description of `p_{t_c}` and `s_{t_c}`
 using Allen's temporal relations unfeasible.
 
-Find more information about the challenges and the solutions in our papers.
+Find more information about the challenges and the solutions, as well as more complex models for TIRP's completion,
+in our papers.
 
 ![TIRP](figures/TIRP.png)
 _Figure 2: The objective is to determine, at various time points (e.g., `tc^1, tc^2, tc^3, tc^4`),
@@ -119,15 +120,18 @@ Additionally, `p_{t_c}^{2.1}` and `p_{t_c}^{2.2}` are prefixes of TIRP `Q2` (col
 and have a different number of _tieps_, in which the earlier instance (`p_{t_c}^{2.1}`) 
 is more advanced than the later one (`p_{t_c}^{2.2}`).
 
-Applying the mean function at `tc` resulted in: 
+Applying the simple mean function at `tc` resulted in: 
 `mean { 0.75, 0.66, 0.87, 0.37, 0.52} = 0.634`.
 Thus, at `tc=105` time units, the estimated probability of observing `y` is `63.4%`.
 
 Similarly, the event of interest occurrence time is computed by continuously aggregating all the predictors'
 estimated TIRP completion times at `tc`.
-Applying the mean function at `tc` resulted in: 
+Applying the simple mean function at `tc` resulted in: 
 `mean {108, 112, 121, 110, 109} = 112` time units, 
 which is close to the actual occurrence time at time point 110.
+
+Find more information about more complex continuous aggregation functions and TIRP selection methods,
+in our papers.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
