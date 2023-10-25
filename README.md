@@ -55,20 +55,48 @@ Frequent time intervals-related patterns (TIRPs) can be discovered from the STI 
 ## Citations and Papers
 Prediction of TIRP completion - PAKDD'2023 (Pacific-Asia Conference on Knowledge Discovery and Data Mining) [[Link](https://dl.acm.org/doi/abs/10.1007/978-3-031-33374-3_19)]:
 
-```
-Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023, May).
-Continuously predicting the completion of a time intervals related pattern.
-In Pacific-Asia Conference on Knowledge Discovery and Data Mining (pp. 239-251).
-Cham: Springer Nature Switzerland.
-```
+   * **APA**
+      ```
+      Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023, May). 
+      Continuously predicting the completion of a time intervals related pattern.
+      In Pacific-Asia Conference on Knowledge Discovery and Data Mining (pp. 239-251).
+      Cham: Springer Nature Switzerland.
+      ```
+   
+  * **BibTeX**
+     ```
+     @inproceedings{itzhak2023continuously,
+       title={Continuously predicting the completion of a time intervals related pattern},
+       author={Itzhak, Nevo and Jaroszewicz, Szymon and Moskovitch, Robert},
+       booktitle={Pacific-Asia Conference on Knowledge Discovery and Data Mining},
+       pages={239--251},
+       year={2023},
+       organization={Springer}
+     }
+     ```
 
 Prediction of TIRP completion - Knowledge and Information Systems - Journal version [[Link](https://link.springer.com/article/10.1007/s10115-023-01910-w)]:
 
-```
-Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023).
-Continuous prediction of a time intervals-related pattern’s completion.
-Knowledge and Information Systems, 1-50.
-```
+
+
+* **APA**
+   ```
+   Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023).
+   Continuous prediction of a time intervals-related pattern’s completion.
+   Knowledge and Information Systems, 1-50.
+   ```
+   
+* **BibTeX**
+   ```
+   @article{itzhak2023continuous,
+     title={Continuous prediction of a time intervals-related pattern’s completion},
+     author={Itzhak, Nevo and Jaroszewicz, Szymon and Moskovitch, Robert},
+     journal={Knowledge and Information Systems},
+     pages={1--50},
+     year={2023},
+     publisher={Springer}
+   }
+  ```
 
 **To find more relevant papers on this topic or similar topics, please visit my [Google Scholar profile](https://scholar.google.com/citations?user=mxSMEeoAAAAJ&hl=en&oi=ao).**
 
