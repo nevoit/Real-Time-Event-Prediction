@@ -55,11 +55,20 @@ Frequent time intervals-related patterns (TIRPs) can be discovered from the STI 
 ## Citations and Papers
 Prediction of TIRP completion - PAKDD'2023 (Pacific-Asia Conference on Knowledge Discovery and Data Mining) [[Link](https://dl.acm.org/doi/abs/10.1007/978-3-031-33374-3_19)]:
 
-`Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023, May). Continuously predicting the completion of a time intervals related pattern. In Pacific-Asia Conference on Knowledge Discovery and Data Mining (pp. 239-251). Cham: Springer Nature Switzerland.`
+```
+Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023, May).
+Continuously predicting the completion of a time intervals related pattern.
+In Pacific-Asia Conference on Knowledge Discovery and Data Mining (pp. 239-251).
+Cham: Springer Nature Switzerland.
+```
 
 Prediction of TIRP completion - Knowledge and Information Systems - Journal version [[Link](https://link.springer.com/article/10.1007/s10115-023-01910-w)]:
 
-`Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023). Continuous prediction of a time intervals-related pattern’s completion. Knowledge and Information Systems, 1-50.`
+```
+Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023).
+Continuous prediction of a time intervals-related pattern’s completion.
+Knowledge and Information Systems, 1-50.
+```
 
 **To find more relevant papers on this topic or similar topics, please visit my [Google Scholar profile](https://scholar.google.com/citations?user=mxSMEeoAAAAJ&hl=en&oi=ao).**
 
