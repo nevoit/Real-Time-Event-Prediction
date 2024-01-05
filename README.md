@@ -102,6 +102,16 @@ An expanded version of this paper, including a detailed formulation of the probl
    }
   ```
 
+A paper proposing a method for continuously predicting an event of interest using multiple instances of multiple temporal patterns has been accepted by the _SIAM International Conference on Data Mining_, 2024:
+
+
+* **APA**
+   ```
+ 	Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2024). 
+	Early Multiple Temporal Patterns Based Event Prediction in Heterogeneous Multivariate Temporal Data.
+	In SIAM International Conference on Data Mining, Houston, TX, U.S., 2024.
+   ```
+
 **To find more relevant papers on this topic or similar topics, please visit my [Google Scholar profile](https://scholar.google.com/citations?user=mxSMEeoAAAAJ&hl=en&oi=ao).**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
