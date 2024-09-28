@@ -112,7 +112,7 @@ A paper proposing a method for continuously predicting an event of interest usin
 	In SIAM International Conference on Data Mining, Houston, TX, U.S., 2024.
    ```
 
-     * **BibTeX**
+* **BibTeX**
    ```
 	@inproceedings{itzhak2024early,
 	  title={Early Multiple Temporal Patterns Based Event Prediction in Heterogeneous Multivariate Temporal Data},
