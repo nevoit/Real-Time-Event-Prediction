@@ -112,6 +112,18 @@ A paper proposing a method for continuously predicting an event of interest usin
 	In SIAM International Conference on Data Mining, Houston, TX, U.S., 2024.
    ```
 
+     * **BibTeX**
+   ```
+	@inproceedings{itzhak2024early,
+	  title={Early Multiple Temporal Patterns Based Event Prediction in Heterogeneous Multivariate Temporal Data},
+	  author={Itzhak, Nevo and Jaroszewicz, Szymon and Moskovitch, Robert},
+	  booktitle={Proceedings of the 2024 SIAM International Conference on Data Mining (SDM)},
+	  pages={199--207},
+	  year={2024},
+	  organization={SIAM}
+	}
+   ```
+
 **To find more relevant papers on this topic or similar topics, please visit my [Google Scholar profile](https://scholar.google.com/citations?user=mxSMEeoAAAAJ&hl=en&oi=ao).**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
