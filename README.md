@@ -102,7 +102,7 @@ An expanded version of this paper, including a detailed formulation of the probl
    }
   ```
 
-A paper proposing a method for continuously predicting an event of interest using multiple instances of multiple temporal patterns has been accepted by the _SIAM International Conference on Data Mining_, 2024:
+A paper proposing a method for continuously predicting an event of interest using multiple instances of multiple temporal patterns has been accepted by the _SIAM International Conference on Data Mining_, 2024 [[Link](https://doi.org/10.1137/1.9781611978032.23)]:
 
 
 * **APA**
