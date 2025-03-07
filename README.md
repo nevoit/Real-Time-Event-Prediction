@@ -480,8 +480,6 @@ asking questions, and providing comments.
 In memory of [Lior Tkach](https://www.linkedin.com/in/lior-tkach/) (M.Sc. student in [Prof. Robert Moskovitch's lab](https://www.ise.bgu.ac.il/cdalab/)),
 who was tragically killed in [a terror attack on October 7th, 2023](https://en.wikipedia.org/wiki/2023_Hamas_attack_on_Israel).
 
-Lior's passion for knowledge and dedication to his work were evident in his constructive comments and
-pivotal role in debugging the code for this repository. 
 His memory lives on in our hearts and in the work we continue to do.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
