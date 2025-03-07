@@ -59,14 +59,6 @@ The completion of a TIRP can be inferred by calculating the probability of obser
 given its observed part at a specific time.
 
 A paper describing the idea of continuous completion prediction of a single temporal pattern instance at the _Pacific-Asia Conference on Knowledge Discovery and Data Mining_ in 2023 [[Link](https://dl.acm.org/doi/abs/10.1007/978-3-031-33374-3_19)]:
-
-   * **APA**
-      ```
-      Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023, May). 
-      Continuously predicting the completion of a time intervals related pattern.
-      In Pacific-Asia Conference on Knowledge Discovery and Data Mining (pp. 239-251).
-      Cham: Springer Nature Switzerland.
-      ```
    
   * **BibTeX**
      ```
@@ -82,14 +74,6 @@ A paper describing the idea of continuous completion prediction of a single temp
 
 An expanded version of this paper, including a detailed formulation of the problem, a description of the challenges, and the algorithms used to solve them, as well as a description of the fully continuous prediction model that incorporates the pattern’s components’ durations and more extensive experiments including various temporal abstraction methods, was accepted for publication in the _Journal of Knowledge and Information Systems (KAIS)_ [[Link](https://link.springer.com/article/10.1007/s10115-023-01910-w)]:
 
-
-* **APA**
-   ```
-   Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2023).
-   Continuous prediction of a time intervals-related pattern’s completion.
-   Knowledge and Information Systems, 1-50.
-   ```
-   
 * **BibTeX**
    ```
    @article{itzhak2023continuous,
@@ -103,14 +87,6 @@ An expanded version of this paper, including a detailed formulation of the probl
   ```
 
 A paper proposing a method for continuously predicting an event of interest using multiple instances of multiple temporal patterns has been accepted by the _SIAM International Conference on Data Mining_, 2024 [[Link](https://doi.org/10.1137/1.9781611978032.23)]:
-
-
-* **APA**
-   ```
- 	Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (2024). 
-	Early Multiple Temporal Patterns Based Event Prediction in Heterogeneous Multivariate Temporal Data.
-	In SIAM International Conference on Data Mining, Houston, TX, U.S., 2024.
-   ```
 
 * **BibTeX**
    ```
