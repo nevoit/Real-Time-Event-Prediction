@@ -473,12 +473,6 @@ I would like to thank [Tali Malenboim](https://www.linkedin.com/in/tali-malenboi
 [Lior Tkach](https://www.linkedin.com/in/lior-tkach/), and Shani Bahat for their help in debugging this repository,
 asking questions, and providing comments.
 
-These students plan to continue my PhD work, 
-and they have done a great job of understanding all the complex aspects of this research in order to implement
-their own ideas in the future. 
-
-I wish you all the best with your research, and I hope this repository will help you achieve your academic goals.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- DEDICATION -->
