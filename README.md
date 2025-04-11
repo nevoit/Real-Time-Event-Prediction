@@ -1,7 +1,7 @@
 # Real-Time Event Prediction
 <a name="readme-top"></a>
 
-This repository includes implementation of my research that propose novel methods for 
+This repository includes the implementation of my research that proposes novel methods for 
 real-time event prediction for heterogeneous multivariate temporal data 
 (time series, instantaneous events, and time intervals).
 
@@ -11,7 +11,7 @@ and V4 represents time intervals.
 
 ![Real-Time Event Prediction](figures/hetro_event_pred.gif)
 
-_Figure 1: The animation shows that the probability of experiencing an event of interest (heart attack in this example)
+_Figure 1: The animation shows the probability of experiencing an event of interest (heart attack in this example)
 increases over time (tc represents the current time), while the estimated time to event decreases._
 
 <!-- TABLE OF CONTENTS -->
@@ -54,51 +54,23 @@ Frequent time intervals-related patterns (TIRPs) can be discovered from the STI 
 <!-- Citations & Papers -->
 ## Citations and Papers
 
-### TIRP Completion Prediction
-The completion of a TIRP can be inferred by calculating the probability of observing the remaining part of the pattern,
-given its observed part at a specific time.
+Itzhak et al. ([2025a](#2025a), [2025b](#2025b)) proposed a novel framework for real-time event prediction using multiple frequent temporal patterns mined from heterogeneous multivariate data or provided by an external source (e.g., human expert). Their approach transforms raw data into symbolic time intervals (STIs), detects *Time Intervals Related **Patterns*** (TIRPs) ending with an event of interest, and continuously estimates both the probability and timing of the event’s occurrence. The framework includes models for individual pattern completion ([2023a](#2023a), [2023b](#2023b)), aggregation of multiple instances of a single pattern ([2024a](#2024a)), and ensemble learning from multiple patterns ([2024b](#2024b), [2025a](#2025a)). Additionally, pattern selection methods were introduced to enhance prediction accuracy and efficiency ([2025b](#2025b)). Together, this line of work provides a comprehensive and interpretable solution for real-time event prediction in dynamic domains such as healthcare.
 
-A paper describing the idea of continuous completion prediction of a single temporal pattern instance at the _Pacific-Asia Conference on Knowledge Discovery and Data Mining_ in 2023 [[Link](https://dl.acm.org/doi/abs/10.1007/978-3-031-33374-3_19)]:
-   
-  * **BibTeX**
-     ```
-     @inproceedings{itzhak2023continuously,
-       title={Continuously predicting the completion of a time intervals related pattern},
-       author={Itzhak, Nevo and Jaroszewicz, Szymon and Moskovitch, Robert},
-       booktitle={Pacific-Asia Conference on Knowledge Discovery and Data Mining},
-       pages={239--251},
-       year={2023},
-       organization={Springer}
-     }
-     ```
+### References (APA Style)
 
-An expanded version of this paper, including a detailed formulation of the problem, a description of the challenges, and the algorithms used to solve them, as well as a description of the fully continuous prediction model that incorporates the pattern’s components’ durations and more extensive experiments including various temporal abstraction methods, was accepted for publication in the _Journal of Knowledge and Information Systems (KAIS)_ [[Link](https://link.springer.com/article/10.1007/s10115-023-01910-w)]:
+- Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2023a">2023a</a>). *Continuously predicting the completion of a time intervals related pattern*. In *Proceedings of the Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD)*. https://doi.org/10.1007/978-3-031-33374-3_19
 
-* **BibTeX**
-   ```
-   @article{itzhak2023continuous,
-     title={Continuous prediction of a time intervals-related pattern’s completion},
-     author={Itzhak, Nevo and Jaroszewicz, Szymon and Moskovitch, Robert},
-     journal={Knowledge and Information Systems},
-     pages={1--50},
-     year={2023},
-     publisher={Springer}
-   }
-  ```
+- Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2023b">2023b</a>). *Continuous prediction of a time-intervals-related pattern’s completion*. *Knowledge and Information Systems*. https://doi.org/10.1007/s10115-023-01910-w
 
-A paper proposing a method for continuously predicting an event of interest using multiple instances of multiple temporal patterns has been accepted by the _SIAM International Conference on Data Mining_, 2024 [[Link](https://doi.org/10.1137/1.9781611978032.23)]:
+- Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2024a">2024a</a>). *Event prediction by estimating continuously the completion of a single temporal pattern’s instances*. *Journal of Biomedical Informatics*. [Link coming soon]
 
-* **BibTeX**
-   ```
-	@inproceedings{itzhak2024early,
-	  title={Early Multiple Temporal Patterns Based Event Prediction in Heterogeneous Multivariate Temporal Data},
-	  author={Itzhak, Nevo and Jaroszewicz, Szymon and Moskovitch, Robert},
-	  booktitle={Proceedings of the 2024 SIAM International Conference on Data Mining (SDM)},
-	  pages={199--207},
-	  year={2024},
-	  organization={SIAM}
-	}
-   ```
+- Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2024b">2024b</a>). *Early multiple temporal patterns based event prediction in heterogeneous multivariate temporal data*. In *Proceedings of the SIAM International Conference on Data Mining (SDM)*. https://doi.org/10.1007/978-3-031-33374-3_19
+
+- Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2025a">2025a</a>). *Temporal ensemble of multiple patterns’ instances for continuous prediction of events*. *Machine Learning*. https://doi.org/10.1007/s10994-025-06756-7
+
+- Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2025b">2025b</a>). *Temporal pattern selection for multiple temporal patterns’ instances-based continuous prediction of events*. *Pattern Recognition*. [Link coming soon]
+
+
 
 **To find more relevant papers on this topic or similar topics, please visit my [Google Scholar profile](https://scholar.google.com/citations?user=mxSMEeoAAAAJ&hl=en&oi=ao).**
 
