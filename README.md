@@ -62,7 +62,7 @@ Itzhak et al. ([2025a](#2025a), [2025b](#2025b)) proposed a novel framework for 
 
 - Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2023b">2023b</a>). *Continuous prediction of a time-intervals-related pattern’s completion*. *Knowledge and Information Systems*. https://doi.org/10.1007/s10115-023-01910-w
 
-- Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2024a">2024a</a>). *Event prediction by estimating continuously the completion of a single temporal pattern’s instances*. *Journal of Biomedical Informatics*. [Link coming soon]
+- Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2024a">2024a</a>). *Event prediction by estimating continuously the completion of a single temporal pattern’s instances*. *Journal of Biomedical Informatics*. https://doi.org/10.1016/j.jbi.2024.104665
 
 - Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2024b">2024b</a>). *Early multiple temporal patterns based event prediction in heterogeneous multivariate temporal data*. In *Proceedings of the SIAM International Conference on Data Mining (SDM)*. https://doi.org/10.1007/978-3-031-33374-3_19
 
