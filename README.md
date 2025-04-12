@@ -68,7 +68,7 @@ Additionally, pattern selection methods were introduced to enhance prediction pe
 
 - Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2024a">2024a</a>). *Event prediction by estimating continuously the completion of a single temporal pattern’s instances*. *Journal of Biomedical Informatics*. https://doi.org/10.1016/j.jbi.2024.104665
 
-- Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2024b">2024b</a>). *Early multiple temporal patterns based event prediction in heterogeneous multivariate temporal data*. In *Proceedings of the SIAM International Conference on Data Mining (SDM)*. https://doi.org/10.1007/978-3-031-33374-3_19
+- Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2024b">2024b</a>). *Early multiple temporal patterns based event prediction in heterogeneous multivariate temporal data*. In *Proceedings of the SIAM International Conference on Data Mining (SDM)*. https://doi.org/10.1137/1.9781611978032.23
 
 - Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2025a">2025a</a>). *Temporal ensemble of multiple patterns’ instances for continuous prediction of events*. *Machine Learning*. https://doi.org/10.1007/s10994-025-06756-7
 
