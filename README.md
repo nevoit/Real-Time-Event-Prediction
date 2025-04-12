@@ -56,8 +56,9 @@ Frequent time intervals-related patterns (TIRPs) can be discovered from the STI 
 
 Itzhak et al. ([2025a](#2025a), [2025b](#2025b)) proposed a novel framework for real-time event prediction using multiple temporal patterns that end with the event of interest. These patterns can be provided by an external source (e.g., human experts) or mined from heterogeneous multivariate temporal data.
 Their approach transforms raw data into symbolic time intervals, detects *Time Intervals Related **Patterns*** (TIRPs) that end with the event of interest, and continuously estimates the probability and timing of the event’s occurrence.
-The framework includes models for the completion prediction of a single TIRP instance ([2023a](#2023a), [2023b](#2023b)), supported by three continuous prediction models (CPMs): the Bayes rule-based SCPM ([2023a](#2023a)), and the more advanced FCPM ([2023a](#2023a)) and the machine learning-based CPM (CPML) ([2023b](#2023b)), which provide continuously updated probabilities based on the durations. 
-It also supports aggregation of multiple instances of a single pattern ([2024a](#2024a)) and ensemble learning from multiple instances of multiple patterns ([2024b](#2024b), [2025a](#2025a)). Additionally, pattern selection methods were introduced to enhance prediction performance and efficiency ([2025b](#2025b)).
+The framework includes models for the completion prediction of a single TIRP instance ([2023a](#2023a), [2023b](#2023b)), supported by three continuous prediction models (CPMs): the Bayes rule-based SCPM ([2023a](#2023a)), and the more advanced FCPM ([2023a](#2023a)) and the machine learning-based CPM (CPML) ([2023b](#2023b)), which provide continuously updated predictions based on the durations. 
+It also supports aggregation of multiple instances of a single pattern ([2024a](#2024a)) and ensemble learning from multiple instances of multiple patterns ([2024b](#2024b), [2025a](#2025a)). 
+Additionally, pattern selection methods were introduced to enhance prediction performance and efficiency ([2025b](#2025b)).
 
 ### References (APA Style)
 
