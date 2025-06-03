@@ -72,7 +72,7 @@ Additionally, pattern selection methods were introduced to enhance prediction pe
 
 - Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2025a">2025a</a>). *Temporal ensemble of multiple patterns’ instances for continuous prediction of events*. *Machine Learning*. https://doi.org/10.1007/s10994-025-06756-7
 
-- Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2025b">2025b</a>). *Temporal pattern selection for multiple temporal patterns’ instances-based continuous prediction of events*. *Pattern Recognition*. [Link coming soon]
+- Itzhak, N., Jaroszewicz, S., & Moskovitch, R. (<a name="2025b">2025b</a>). *Time-intervals-related pattern selection for continuous event prediction*. *Pattern Recognition*. https://doi.org/10.1016/j.patcog.2025.111546
 
 
 
